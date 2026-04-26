@@ -1,0 +1,96 @@
+---
+title: "Your first trade"
+description: "Search a token, hit Buy, confirm. Walkthrough for both web and Telegram."
+icon: "bolt"
+---
+
+You have a wallet, you have SOL. Time to trade. Here's the shortest path to your first buy on each surface.
+
+<Tabs>
+  <Tab title="Web App">
+    <Steps>
+      <Step title="Search a token">
+        Hit `/` to focus the search bar in the top nav. Type a symbol or paste a Solana token address. Click the result.
+      </Step>
+      <Step title="Land in the Terminal">
+        You're now on the per-token page. The chart is on the left, the order entry panel is on the right.
+      </Step>
+      <Step title="Pick an amount">
+        In the **Buy** tab, click a preset amount (`0.1`, `0.5`, `1` SOL) or type a custom amount. The estimated token output appears below.
+      </Step>
+      <Step title="Check slippage and MEV">
+        Default slippage is fine for most trades. **MEV protection** is on by default with the *good* Jito tier — leave it unless you know what you're doing. See [MEV & Jito](/concepts/mev-and-jito).
+      </Step>
+      <Step title="Hit BUY">
+        Confirm the dialog. The trade is signed and submitted to Solana. You'll see a status update within seconds.
+      </Step>
+      <Step title="Verify">
+        Your new position shows up in the **Holdings** section of the same page, and in **Portfolio → Holdings**.
+      </Step>
+    </Steps>
+  </Tab>
+  <Tab title="Telegram Bot">
+    <Steps>
+      <Step title="Send the token">
+        DM the bot ([@znox_trading_betabot](https://t.me/znox_trading_betabot)) with a token address or symbol. Or send `/search`.
+      </Step>
+      <Step title="Read the token card">
+        The bot replies with a card: price, market cap, liquidity, holder count, social links, security badges.
+      </Step>
+      <Step title="Pick an amount">
+        Tap a preset Buy button (`0.1`, `0.5`, `1` SOL) or use the custom input.
+      </Step>
+      <Step title="Confirm">
+        Tap **Authorize**. The bot updates the message with the trade status. Confirmation usually arrives in a few seconds.
+      </Step>
+      <Step title="Check positions">
+        Send `/positions` to see your open trades, including the one you just made.
+      </Step>
+    </Steps>
+  </Tab>
+</Tabs>
+
+## Selling works the same way
+
+Switch the Buy tab to **Sell** (web) or use the sell preset buttons on a token card (bot). You sell a percentage of your position — common presets are 25%, 50%, 100%.
+
+<Tip>
+  For SOL specifically, "sell 100%" leaves a tiny residual to keep the wallet usable for fees. This is intentional.
+</Tip>
+
+## What happens behind the scenes
+
+When you hit Buy, Znox:
+
+1. Picks the best DEX route across Solana liquidity (see [DEX routing](/concepts/dex-routing)).
+2. Builds a swap transaction with your slippage tolerance.
+3. If MEV protection is on, bundles it through Jito with your tip tier (see [MEV & Jito](/concepts/mev-and-jito)).
+4. Signs the transaction with your wallet's key (held in the Znox key-management system).
+5. Submits it and waits for finality.
+
+The whole loop is typically sub-second.
+
+## If something goes wrong
+
+<AccordionGroup>
+  <Accordion title="Slippage exceeded">
+    Price moved more than your tolerance between quote and execution. Increase slippage in **Terminal Settings** or retry — common on volatile tokens.
+  </Accordion>
+  <Accordion title="Insufficient SOL for fees">
+    Your wallet doesn't have enough SOL to cover the network fee + priority fee + Jito tip. Top up.
+  </Accordion>
+  <Accordion title="Transaction not confirmed">
+    Solana didn't include the tx in a block. Usually Jito reroutes; if not, the trade auto-cancels and your funds stay where they were.
+  </Accordion>
+</AccordionGroup>
+
+## Next
+
+<CardGroup cols={2}>
+  <Card title="Explore the Terminal" icon="chart-line" href="/web-app/terminal/overview">
+    The full per-token page — chart, recent trades, top traders, security audit.
+  </Card>
+  <Card title="Watch other traders" icon="users" href="/web-app/traders-hub/broadcast">
+    Traders Hub — see live trades and Quick Ape in one click.
+  </Card>
+</CardGroup>

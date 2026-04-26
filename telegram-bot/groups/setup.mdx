@@ -1,0 +1,71 @@
+---
+title: "Add the bot to a group"
+description: "Set up the Znox bot in a Telegram group or channel so trades from a wallet broadcast there."
+icon: "users"
+---
+
+The Znox bot can be added to any Telegram group or channel. Once it's in, trades from a wallet you've linked to that group post automatically as broadcasts with Quick Ape buttons — turning your group into a live trade feed.
+
+## Who can do this
+
+Only the **group owner** can add the Znox bot. Non-owner additions are rejected automatically — the bot leaves with a polite explanation message. This is anti-abuse: it prevents random members from spamming groups with bot integrations.
+
+For channels, the same rule applies — only the channel creator can authorize.
+
+## Add the bot
+
+<Steps>
+  <Step title="Open your group/channel settings">
+    Tap the group/channel name → **Add Members** → search `@znox_trading_betabot`.
+  </Step>
+  <Step title="Grant admin permissions">
+    The bot needs admin privileges with at minimum **Post Messages** permission. Without it, broadcasts can't be posted.
+  </Step>
+  <Step title="Bot greeting">
+    Once admin, the bot posts a short welcome message confirming it's ready.
+  </Step>
+</Steps>
+
+## Link a wallet to the group
+
+After the bot joins, it generates an **invite link** (or "broadcast link") for you to use to bind a wallet to the group:
+
+<Steps>
+  <Step title="Tap the welcome message">
+    The greeting message has a "Set up broadcasting" button (or DM the bot if you missed it).
+  </Step>
+  <Step title="Pick a wallet">
+    The bot lists your wallets. Choose which one will broadcast its trades to this group.
+  </Step>
+  <Step title="Enable broadcasting">
+    Confirm. From that moment, every trade from the linked wallet posts to the group as a [broadcast](/telegram-bot/groups/broadcasts).
+  </Step>
+</Steps>
+
+## Multi-group setup
+
+A single wallet can broadcast to multiple groups — you can repeat the link flow with different groups, all pointing to the same wallet.
+
+Conversely, different wallets can broadcast to different groups, so you can run separate trading channels for separate strategies without mixing them.
+
+## Disable broadcasting
+
+To stop broadcasting from a wallet to a group:
+
+- In the bot DM, send `/settings` → choose the wallet → **Group broadcasts** → toggle off the group.
+- Or: remove the bot from the group entirely (the bot's broadcast subscriptions to that group are deleted).
+
+## Channel vs group
+
+The setup is the same for both. Channels behave slightly differently in Telegram — only admins can post — but the broadcast UX is identical from the viewer's side.
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Broadcasts in groups" icon="tower-broadcast" href="/telegram-bot/groups/broadcasts">
+    What broadcast messages look like in the group.
+  </Card>
+  <Card title="Anti-spam rules" icon="shield" href="/telegram-bot/groups/anti-spam">
+    Why the bot doesn't reply to every message in a group.
+  </Card>
+</CardGroup>

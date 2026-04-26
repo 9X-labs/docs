@@ -1,0 +1,61 @@
+---
+title: "DEX routing & best-market selection"
+description: "Solana has many decentralized exchanges. Znox picks the best one for every trade automatically — you never have to choose."
+icon: "route"
+---
+
+Solana liquidity isn't in one place. The same token might trade on Pump.Fun, Raydium, Orca, Meteora, and a half-dozen other DEXs simultaneously, with different prices and depths. Picking the wrong one means worse fills.
+
+Znox routes every trade through a **best-market selection** layer that compares quotes across supported venues and picks the one that gives you the best execution.
+
+## How routing works
+
+<Steps>
+  <Step title="You hit Buy or Sell">
+    Your trade size + token + quote token are passed to the routing engine.
+  </Step>
+  <Step title="Quote the venues">
+    The engine pulls live pool state from every supported DEX and computes the expected output for your trade size on each.
+  </Step>
+  <Step title="Pick the winner">
+    The venue with the best post-slippage output wins. For very large trades, multi-hop routes (e.g., split across two DEXs) are considered.
+  </Step>
+  <Step title="Build and submit">
+    The transaction is built against the chosen venue's program and submitted to Solana.
+  </Step>
+</Steps>
+
+## Supported DEXs
+
+- **Pump.Fun** — pre-graduation memecoin trading
+- **Raydium** — including AMM, CLMM, and CPMM pools
+- **Orca** — including Whirlpools (concentrated liquidity)
+- **Meteora** — DLMM and DAMM pools
+- **PumpSwap** — post-graduation Pump.Fun routes
+- **Jupiter** — fallback aggregator for routes Znox doesn't directly support
+
+The list grows over time. Routing is transparent — you don't need to know which venue your trade hit.
+
+## Why the price you see may differ slightly from the price you got
+
+Two reasons:
+
+1. **Display price is a midpoint.** The quote shown on the chart is between bid and ask. Your actual fill comes from one side of the book.
+2. **Depth eats the spread.** A bigger trade walks down (or up) the order book / curve and gets a worse average price. This is reflected in the **estimated output** field below the amount input — that number is the price after walking the depth.
+
+The slippage tolerance is your safety margin against this. If the post-walk price exceeds your tolerance, the trade reverts.
+
+## Pool selection for memecoins
+
+Memecoins often graduate from Pump.Fun to PumpSwap (and eventually Raydium). During and right after migration, liquidity is fragmented. Znox's router chooses the deepest pool at the moment of execution — but **expect wider spreads on freshly-graduated tokens**.
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Order execution" icon="gear" href="/concepts/order-execution">
+    Slippage, priority fee, and market vs limit orders.
+  </Card>
+  <Card title="MEV & Jito" icon="shield" href="/concepts/mev-and-jito">
+    Why and how Znox bundles transactions through Jito for protection.
+  </Card>
+</CardGroup>

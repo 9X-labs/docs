@@ -1,0 +1,52 @@
+---
+title: "Notifications"
+description: "Push, email, Telegram — choose where Znox tells you about trades, prices, and account events."
+icon: "bell"
+---
+
+Znox can notify you on three channels (web push, email, Telegram), about four kinds of events. The **Notifications** sub-tab is the matrix where you decide which combinations apply.
+
+## Channels
+
+<CardGroup cols={3}>
+  <Card title="Push" icon="browser">
+    Web browser notifications. Requires you to grant permission on your first visit.
+  </Card>
+  <Card title="Email" icon="envelope">
+    Goes to the email tied to your sign-in provider.
+  </Card>
+  <Card title="Telegram" icon="telegram">
+    DMs from the Znox bot. Requires a linked Telegram account.
+  </Card>
+</CardGroup>
+
+## Event types
+
+| Event | What triggers it |
+| --- | --- |
+| **Trade alerts** | Your trades complete (or fail) |
+| **Price alerts** | A watched token hits a target you set |
+| **News alerts** | Significant on-chain events on tracked wallets/tokens |
+| **System alerts** | Account security, login from new device, withdrawal confirmations |
+
+## Configuring
+
+For each event type, check the channels you want it on. Common patterns:
+
+- **Trade alerts** — Push only (you're already watching the screen).
+- **Price alerts** — Push + Telegram (catch you when you're not at the desk).
+- **System alerts** — All three. These are security-relevant; redundancy is good.
+
+## Do not disturb
+
+A time-window setting that mutes all push and email notifications during the chosen hours. Telegram bypasses DND if you've enabled "always allow Znox" in your Telegram client.
+
+## Sound
+
+Web push notifications can play a sound. Toggle on/off here. Each notification type can have its own sound (default Znox tone or system default).
+
+## Related
+
+<Card title="Security" icon="shield" href="/web-app/settings/security">
+  System alerts are the safety-relevant ones — keep those on.
+</Card>

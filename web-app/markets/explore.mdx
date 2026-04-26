@@ -1,0 +1,57 @@
+---
+title: "Explore (new pairs)"
+description: "Freshly launched tokens, with filters to weed out scams and noise."
+icon: "sparkles"
+---
+
+The **Explore** sub-tab surfaces newly created Solana tokens — typically minutes to hours old. The list is firehose-y by nature; the filters and risk badges are how you make it tractable.
+
+## What's in the list
+
+Each row shows a newly listed token with:
+
+| Column | What it means |
+| --- | --- |
+| Symbol / Name | Token identifier |
+| Created | How long since the pair appeared |
+| Price | Current quote in your selected quote token |
+| 24h % | Price change since launch |
+| Liquidity | Pool depth in USD |
+| Market Cap | Circulating supply × price |
+| Volume | Trading volume in the period |
+| Holders | Number of unique holders |
+
+## Filters
+
+Use the filter panel to narrow the firehose. Common settings:
+
+- **Liquidity range** — exclude tokens with too-thin pools to trade reliably.
+- **Market cap range** — focus on a specific size band (microcaps vs. mid-caps).
+- **Volume threshold** — exclude dead tokens with no real activity.
+- **Verified only** — show only tokens with a verified contract.
+- **Rug protection** — hide tokens that fail basic safety checks.
+- **Trust score** — minimum trust threshold based on contract analysis.
+- **Risk level** — Low / Medium / High based on holder concentration, liquidity locks, etc.
+
+## Quick Buy
+
+Each row has a **Quick Buy** with your preset SOL amounts (`0.1 / 0.5 / 1` by default). The presets persist across sessions — set them in **Terminal Settings**.
+
+<Warning>
+  New pairs are the riskiest part of the market. Verify the token's security audit (visible in the [Terminal](/web-app/terminal/overview)) before sizing up.
+</Warning>
+
+## Auto-refresh
+
+The list refreshes every 10 seconds by default. The countdown is in the top-right; a toggle disables auto-refresh if you need a stable view.
+
+## See also
+
+<CardGroup cols={2}>
+  <Card title="Trending" icon="fire" href="/web-app/markets/trending">
+    For tokens that have moved past the launch noise.
+  </Card>
+  <Card title="Order execution" icon="bolt" href="/concepts/order-execution">
+    Why slippage matters more on new pairs.
+  </Card>
+</CardGroup>

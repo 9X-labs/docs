@@ -1,0 +1,48 @@
+---
+title: "PnL Calendar"
+description: "A heatmap of your daily P&L. Spot streaks, drawdowns, and your trading rhythm at a glance."
+icon: "calendar-days"
+---
+
+The **PnL Calendar** is a calendar-grid heatmap of your trading P&L. Each cell is a day; the color intensity shows magnitude; green means profit, red means loss.
+
+## Opening it
+
+Click the **PNL Calendar** button at the top of [Portfolio](/web-app/portfolio/overview). The view opens in a modal.
+
+## Reading the grid
+
+- **Green** — profitable day. Darker green = bigger profit.
+- **Red** — losing day. Darker red = bigger loss.
+- **Grey** — no trades that day (or net zero).
+
+Hover any cell to see the exact P&L for that day plus the trade count.
+
+## Toggles
+
+- **Wallet filter** — show all wallets aggregated, or pick a specific wallet.
+- **Quote token toggle** — view P&L in your selected quote (SOL vs. USDC). The calendar is currency-aware.
+- **Period** — month / year view.
+
+## What it's good for
+
+<CardGroup cols={2}>
+  <Card title="Spotting streaks" icon="fire">
+    Long green runs — you're in form. Long red — time to take a break.
+  </Card>
+  <Card title="Drawdown sizing" icon="chart-line-down">
+    Find your worst single-day loss. Use it to calibrate position sizing.
+  </Card>
+  <Card title="Pattern detection" icon="grid">
+    Are weekends red? Mondays green? Visual pattern often beats spreadsheet analysis.
+  </Card>
+  <Card title="Tax basis" icon="file-invoice-dollar">
+    Quickly see which tax-year days were profitable for record-keeping.
+  </Card>
+</CardGroup>
+
+## Related
+
+<Card title="Holdings, History, Orders" icon="list" href="/web-app/portfolio/holdings-history-orders">
+  When the calendar shows you something interesting, drill into the day's trades from History.
+</Card>

@@ -1,0 +1,51 @@
+---
+title: "Anti-spam rules"
+description: "In groups, the bot only responds to mentions, replies, and pure addresses. Here's why."
+icon: "shield-check"
+---
+
+In a 1-on-1 DM with the Znox bot, every message gets processed — that's the chat. In a **group** chat where the bot is a member, the bot is selective: it only replies to messages that match specific patterns.
+
+This is by design. Without the rule, the bot would interpret every group message as a potential token search and flood the chat with noise.
+
+## When the bot responds in a group
+
+The bot processes a group message only if **at least one** of the following is true:
+
+<CardGroup cols={3}>
+  <Card title="The message mentions the bot" icon="at">
+    Use `@znox_trading_betabot <something>` to direct a message at the bot. Example: `@znox_trading_betabot SOL`.
+  </Card>
+  <Card title="The message is a reply to a bot message" icon="reply">
+    Tap **Reply** on any of the bot's earlier messages. The bot interprets the reply in the context of that conversation.
+  </Card>
+  <Card title="The message is a pure Solana address" icon="hashtag">
+    A message containing **only** a valid Solana address (no other text) is treated as a token search. Dropping just the address into the chat triggers a token card response.
+  </Card>
+</CardGroup>
+
+## When the bot ignores you
+
+- Multi-word messages that contain a Solana address but also other text (e.g., `check this address Abc123...`) — the bot doesn't respond. This prevents triggering on someone *talking about* an address.
+- Messages without a mention, reply, or pure address — totally ignored. The bot just watches.
+
+## Why this matters
+
+Two reasons:
+
+1. **Group chat hygiene.** A 100-member group with active conversation would generate hundreds of bot responses if every message were processed. The mention/reply/address rule makes the bot a polite participant.
+2. **Anti-abuse.** Bots that auto-respond to every keyword can be exploited (e.g., someone posts a malicious link disguised as a token query). Strict matching makes that attack vector much harder.
+
+## Broadcast messages are exempt
+
+This rule applies to **incoming** group messages — what users send. The bot's own [broadcast posts](/telegram-bot/groups/broadcasts) (from linked wallets) are pushed *by* the bot, not in response to a message, so the anti-spam rule doesn't apply.
+
+## In channels
+
+Channels have only admins posting; the rule still applies to admin messages. Most channels use the bot purely as a broadcast destination, so this rarely comes up.
+
+## Related
+
+<Card title="Group setup" icon="users" href="/telegram-bot/groups/setup">
+  How the bot gets added to a group in the first place.
+</Card>

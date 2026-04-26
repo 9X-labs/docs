@@ -1,0 +1,82 @@
+---
+title: "Terminal overview"
+description: "The per-token trade page. Chart, order entry, position, recent trades, top traders, security audit — all in one screen."
+icon: "chart-line"
+---
+
+You land in the **Terminal** by clicking any token anywhere — a Markets row, a search result, a broadcast, a Track Wallets event. The Terminal is where you actually trade.
+
+It's a dense page on purpose. Everything you need to make a decision and act is on one screen. Here's the map.
+
+## Token header
+
+The strip at the top:
+
+- **Logo, symbol, name, verified badge**
+- **Current price** (updates live)
+- **24h change %** (red/green)
+- **Market cap, liquidity, 24h volume, holder count**
+- **Watchlist star** — toggle to pin
+- **Refresh button** + **chart timeframe selector** (1m / 5m / 15m / 1h / 4h / 1d)
+
+## Chart
+
+Interactive candlestick or line chart, pannable and zoomable. Volume bars below the price chart. Crosshair gives you exact OHLCV values at any point.
+
+## Order entry panel (right side)
+
+The whole [Order entry](/web-app/terminal/order-entry) panel — Buy / Sell tabs, slippage, MEV, Jito, presets, market vs limit. This is the workhorse of the page.
+
+## Your position
+
+If you hold this token, a position card shows:
+
+- **Amount held**
+- **Average entry price** (cost basis)
+- **Current value** in your quote token
+- **Unrealized P&L** ($ and %)
+- **Realized P&L** (from already-closed parts of the position)
+
+## Recent trades
+
+Live feed of every swap on this token, network-wide. New buys flash green, sells flash red.
+
+## Per-token Top Traders
+
+Leaderboard of who's making the most P&L on **this specific token**. Click a trader to view their profile or track their wallet.
+
+## First buyers
+
+Wallets that bought in the very first blocks after launch. A pump signal sometimes — a sniper-coordination signal other times.
+
+## KOL / social engagement
+
+Recent X mentions, sentiment, and any influential voices that have posted about the token.
+
+## Security audit
+
+A risk panel summarizing:
+
+- Verified contract ✓/✗
+- Renounced ownership ✓/✗
+- Liquidity locked ✓/✗
+- Mint authority disabled ✓/✗
+- Top-holder concentration
+- A composite trust score
+
+Glance at this **before** you buy a freshly launched token. The panel is the cheapest insurance against scams.
+
+## Settings (gear icon)
+
+Opens the [Terminal Settings](/web-app/terminal/settings) modal — defaults for slippage, priority fee, MEV, Jito tier, expert mode.
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Order entry" icon="bolt" href="/web-app/terminal/order-entry">
+    Detail on every control in the trade panel.
+  </Card>
+  <Card title="Terminal settings" icon="gear" href="/web-app/terminal/settings">
+    Defaults and expert-mode toggles.
+  </Card>
+</CardGroup>

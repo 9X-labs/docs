@@ -1,0 +1,52 @@
+---
+title: "Referral on the bot"
+description: "Get your referral code, share, and track earnings — all from a single command."
+icon: "user-plus"
+---
+
+Send `/referral` to open the referral dashboard inside the bot. The same data and earning logic as the [web Referral page](/web-app/rewards/referral) — just packaged for Telegram.
+
+## What you see
+
+The bot shows:
+
+- **Your referral code** (editable).
+- **Your shareable link** (one-tap to copy or forward inside Telegram).
+- **Stats:** number of referrals, your volume, their volume, earnings (pending and lifetime).
+- **Leaderboard** position — where you rank among referrers.
+- **Team stats** — aggregate metrics for the network you've referred.
+
+## Sharing in Telegram
+
+The big advantage of `/referral` over the web is that the bot can **forward** the referral message inline. Tap **Share Link** → pick a chat → done. The shared message is rich (with the referral chart preview), not a bare URL.
+
+Sharing inside groups posts an invite card with a one-tap join button.
+
+## Earning model
+
+Same as web: **50%** of every fee paid by people you refer, forever. If your referral Quick-Apes one of your broadcasts, they trigger an additional 25% Signal reward — total **50% combined** on that specific trade.
+
+For the full math, see [Social-trading loop](/concepts/social-trading-loop) and [Rewards overview](/web-app/rewards/overview).
+
+## Editing your code
+
+Tap **Edit Code** in the bot's referral menu. Type a new code as a reply. Codes must be alphanumeric, 4–12 characters, and unique across the platform.
+
+## Pagination
+
+The leaderboard view paginates — tap **Next** to scroll. Your rank highlights wherever you sit.
+
+## Where earnings settle
+
+Referral earnings settle to your **primary wallet** at a regular cadence. No manual claim required. Send `/wallet` after a settlement to see them.
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Referral on the web" icon="browser" href="/web-app/rewards/referral">
+    Same data, full visualization with the earning curves chart.
+  </Card>
+  <Card title="Social-trading loop" icon="rocket" href="/concepts/social-trading-loop">
+    How referral and signal stack.
+  </Card>
+</CardGroup>

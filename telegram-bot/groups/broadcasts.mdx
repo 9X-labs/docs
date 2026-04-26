@@ -1,0 +1,69 @@
+---
+title: "Broadcasts & Quick Ape"
+description: "What a trade broadcast looks like in a Telegram group, and how members tap Quick Ape to copy it."
+icon: "tower-broadcast"
+---
+
+Once a wallet is [linked to a group](/telegram-bot/groups/setup), every trade from that wallet posts as a **broadcast message** in the group. Group members can tap **Quick Ape** to copy the trade in one move.
+
+For the underlying mechanic, see [Social-trading loop](/concepts/social-trading-loop).
+
+## What a broadcast message looks like
+
+The bot posts a message with:
+
+- **Trader** identity (username + avatar)
+- **Action** — `BOUGHT $5 of TOKEN @ $1.2M mcap` or `SOLD`
+- **Token info** — symbol, price, market cap snapshot
+- **Quick Ape button** — a deeplink that opens the bot DM in the trade flow
+- **Open in Web** button — link to the [Terminal](/web-app/terminal/overview) for the same token
+
+## What happens when a member taps Quick Ape
+
+<Steps>
+  <Step title="Bot DM opens">
+    Telegram opens a private chat with the Znox bot, pre-loaded with the broadcast context (via a [slink](/concepts/slinks)).
+  </Step>
+  <Step title="Token card appears">
+    The bot shows the same token card as a normal `/search`. The aper sees current price, security info, etc.
+  </Step>
+  <Step title="Buy presets">
+    The aper picks an amount (their own preset, not the broadcaster's). Authorizes the trade.
+  </Step>
+  <Step title="Attribution recorded">
+    The trade is tagged with the originating broadcast ID. The broadcaster earns 25% of fees as a [Signal reward](/web-app/rewards/signals).
+  </Step>
+</Steps>
+
+## Open / close / increase / decrease
+
+For most tokens, every trade posts a broadcast. **SOL is special** — the system recognizes that SOL is the base currency and tracks discrete buy/sell cycles:
+
+- **OPEN broadcasts** — first buy of a SOL cycle.
+- **CLOSE broadcasts** — when sold ≥ bought (cycle ends).
+- **Increase/decrease broadcasts on SOL are skipped.** Only meaningful state transitions get posted.
+
+This avoids spamming groups with every micro-trade on SOL.
+
+## Reactions in groups
+
+In Telegram, group members can use the bot's broadcast message reactions (the same 🔥🚀💰💀👍❤️😂😯 set as the web feed). Reactions are aggregated across web and Telegram — a 🔥 in the group counts the same as a 🔥 on the web feed.
+
+## Muting
+
+Group admins can:
+
+- Pin the bot's broadcasts to keep them visible.
+- Mute non-broadcast bot messages while keeping broadcasts (Telegram's per-bot mute settings).
+- Per-user: members who don't want broadcast pings can disable bot notifications for the group on their device.
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Slinks" icon="link" href="/concepts/slinks">
+    The deeplink primitive that makes Quick Ape attribution work.
+  </Card>
+  <Card title="Anti-spam" icon="shield" href="/telegram-bot/groups/anti-spam">
+    Why the bot doesn't reply to every group message.
+  </Card>
+</CardGroup>

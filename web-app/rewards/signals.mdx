@@ -1,0 +1,56 @@
+---
+title: "Signals"
+description: "Broadcast a trade. When others Quick Ape it, you earn 25% of their fees, forever."
+icon: "tower-broadcast"
+---
+
+The **Signals** sub-tab tracks earnings from people Quick-Aping your broadcasts. Every wallet whose [broadcasting is enabled](/web-app/portfolio/overview) participates automatically.
+
+For the underlying flow, see [Social-trading loop](/concepts/social-trading-loop).
+
+## Stats at the top
+
+| Card | Meaning |
+| --- | --- |
+| Total earnings USD | Lifetime signal rewards across all your broadcasts |
+| Pending earnings USD | Accrued but not yet settled |
+| Total broadcasts | Count of trades you've broadcast |
+| Total apes | Number of times your broadcasts have been Quick-Aped |
+| Split % | Confirmation that you receive 25% of fees |
+
+## Signal list
+
+A scrollable list of every broadcast that has earned you something. Each row shows:
+
+- Token symbol + your buy size
+- Number of users who aped
+- Your earnings from this broadcast so far
+
+Click any row to open a **Broadcast Detail** modal with:
+
+- The original broadcast card
+- Token chart with entry marked
+- Reactions and comments
+- List of users who aped (and how much each ape contributed to your earnings)
+- Your running earnings from this signal over time
+
+## When you don't earn signal rewards
+
+- The aper used a Quick Ape link older than the [slink TTL](/concepts/slinks) (1 hour) — attribution drops.
+- Your wallet's broadcasting was off when you placed the trade — no broadcast, no signal.
+- The aper traded the same token from a different entrypoint (e.g., direct via search), without going through your broadcast.
+
+## When you stop earning on a position
+
+You earn for as long as the aper holds and trades the position they opened from your broadcast. Once they fully close it, that position stops generating signal rewards — but new apes on new broadcasts of yours start a fresh stream.
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Broadcast" icon="rss" href="/web-app/traders-hub/broadcast">
+    Where your broadcasts appear and get aped.
+  </Card>
+  <Card title="Slinks" icon="link" href="/concepts/slinks">
+    Why attribution drops after 1 hour.
+  </Card>
+</CardGroup>

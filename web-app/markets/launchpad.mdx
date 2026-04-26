@@ -1,0 +1,38 @@
+---
+title: "Launchpad"
+description: "Pre-launch and graduating tokens across Pump.Fun, Bonk, and other Solana launchpads."
+icon: "rocket"
+---
+
+**Launchpad** aggregates tokens before they hit the main DEXs — typically while they're still on a bonding curve like Pump.Fun's, building toward graduation.
+
+## What you see
+
+For each token:
+
+- **Bonding-curve progress** — how close to graduation (% of curve filled).
+- **Raised / cap** — total SOL raised against the curve target.
+- **Time on curve** — how long since the token launched on the platform.
+- **Volume / holders / liquidity** — same as elsewhere in Markets.
+
+## Inner tabs
+
+- **Featured** — tokens flagged by the platform, often newer and more curated.
+- **New** — by creation time.
+- **Trending** — by recent volume on the curve.
+
+## Graduation
+
+When a token hits the bonding-curve cap, it "graduates" — liquidity moves from the curve to a real DEX pool (typically PumpSwap, then Raydium). After graduation:
+
+- The token leaves Launchpad and enters **Trending** / **Explore** views.
+- Trade routing moves to standard DEX paths — see [DEX routing](/concepts/dex-routing).
+- Liquidity is fragmented during the migration window — expect wider spreads.
+
+## Trading from Launchpad
+
+Click any token to open the [Terminal](/web-app/terminal/overview). The order entry panel works the same way as for any other token — Znox handles routing through the bonding-curve program automatically.
+
+<Warning>
+  Pre-graduation tokens have very thin liquidity by design. Use small position sizes and high slippage tolerance.
+</Warning>

@@ -1,0 +1,75 @@
+---
+title: "MEV protection & Jito tip tiers"
+description: "MEV protection shields your trades from sandwich bots. Jito tip tiers control how aggressively that protection runs."
+icon: "shield-halved"
+---
+
+When you submit a normal Solana transaction, anyone watching the mempool can see it before it lands in a block. **Sandwich bots** exploit this: they buy in front of your trade, let your buy push the price up, then sell into you for a profit. The cost is yours.
+
+**MEV protection** on Znox routes your trades through [Jito](https://jito.network/) bundles instead of the public mempool, so they're invisible to bots until they execute. The trade-off is a small tip you pay to Jito for inclusion.
+
+## How it works
+
+<Steps>
+  <Step title="Bundle creation">
+    Your swap transaction is wrapped in a Jito bundle along with a tip transaction.
+  </Step>
+  <Step title="Private submission">
+    The bundle goes to Jito relayers, never the public mempool.
+  </Step>
+  <Step title="Atomic inclusion">
+    A Jito-validated leader either includes the *whole* bundle in a block or none of it. No reordering, no insertion.
+  </Step>
+  <Step title="You get filled at quote price">
+    No bot can squeeze in front. Slippage is just from natural pool depth, not from adversarial trades.
+  </Step>
+</Steps>
+
+## Tip tiers
+
+The tip you pay is what gets you inclusion. Znox offers four tiers, each backed by live tip-floor data refreshed every few seconds:
+
+| Tier | What it pays | Use when |
+| --- | --- | --- |
+| **Good** | 25th percentile of recent tips | Calm markets, small trades |
+| **Fast** | 50th percentile | Normal volatility |
+| **Turbo** | 75th percentile | Hot tokens, fast-moving markets |
+| **Custom** | You enter the lamports | You know exactly what you want to pay |
+
+<Note>
+  Tip values change minute-to-minute as the network shifts. Znox shows the *current* tip for each tier so you're not guessing.
+</Note>
+
+## When to turn MEV protection off
+
+Almost never. The tip is small (typically under $0.01) compared to what a sandwich bot would extract. The case for off:
+
+- You're trading a token with no liquid market for sandwiching (e.g., a fresh PumpFun launch where you're a top-3 holder).
+- You're the only one trading the pool at that moment.
+
+Even then, the cost of leaving it on is negligible.
+
+## Where to set it
+
+<Tabs>
+  <Tab title="Per trade (Web)">
+    In the Terminal order entry panel, the **MEV protection** toggle and **Jito tier** dropdown are visible right next to slippage. Changes apply to that trade only.
+  </Tab>
+  <Tab title="Default (Web)">
+    **Terminal Settings** (gear icon) → set the default MEV protection and tier. Applies to every trade unless overridden.
+  </Tab>
+  <Tab title="Bot">
+    `/settings` → choose Buy or Sell side → MEV Protection / Jito Tier. Settings sync with the web app.
+  </Tab>
+</Tabs>
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Order execution" icon="bolt" href="/concepts/order-execution">
+    Slippage and priority fee — the other two knobs that affect how a trade fills.
+  </Card>
+  <Card title="DEX routing" icon="route" href="/concepts/dex-routing">
+    How Znox picks the venue, which interacts with how MEV-vulnerable your trade is.
+  </Card>
+</CardGroup>

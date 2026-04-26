@@ -1,0 +1,67 @@
+---
+title: "Multi-wallet model"
+description: "One Znox account holds many Solana wallets. Each is a real on-chain wallet — you can deposit, withdraw, and trade from any of them."
+icon: "layer-group"
+---
+
+Most trading apps tie your account to a single wallet. Znox doesn't. Your account is a container; your wallets are the on-chain identities you trade with.
+
+## What a wallet is on Znox
+
+A **wallet** on Znox is a real Solana account — it has a public key, holds SOL and SPL tokens, and signs transactions. It is held in our key-management system so you don't have to manage seed phrases, but the funds are yours and the wallet is fully on-chain.
+
+## Why many wallets
+
+<CardGroup cols={2}>
+  <Card title="Strategy isolation" icon="shield">
+    Run different strategies in different wallets so one bad position doesn't drag down another wallet's P&L view.
+  </Card>
+  <Card title="Privacy from observers" icon="eye-slash">
+    Track-Wallets followers see one address. Use a separate wallet for trades you don't want associated with your main one.
+  </Card>
+  <Card title="Per-wallet broadcasts" icon="tower-broadcast">
+    Each wallet has its own broadcast settings — you can broadcast trades from one wallet to a Telegram group while keeping another silent.
+  </Card>
+  <Card title="Risk segmentation" icon="vials">
+    Test new tokens in a small wallet. Keep your main capital in a separate one.
+  </Card>
+</CardGroup>
+
+## The primary wallet
+
+Exactly one wallet at any time is your **primary**. It's what trades execute on by default and what shows first in **Portfolio**. You can change which wallet is primary at any time.
+
+## Funds movement between wallets
+
+Two operations let you move SOL/USDC between your own wallets without touching an external service:
+
+- **Distribute** — split funds from one wallet across several. Useful for spinning up sub-wallets from a main funded wallet.
+- **Consolidate** — pull funds from many wallets into the primary. Useful when you want to make a large trade or withdraw.
+
+Both operations sign on-chain transactions; they're real Solana transfers, not internal accounting moves.
+
+## Archive vs delete
+
+You can **archive** a wallet to hide it from the main list without losing it. Archived wallets still hold any funds they had, and you can unarchive them at any time.
+
+Wallets cannot be deleted — once a key exists, it exists. Withdrawing the balance to zero and archiving is the closest you get to "removing" a wallet.
+
+## Where wallets live across surfaces
+
+| Surface | Where wallets show |
+| --- | --- |
+| Web Portfolio | Full list with P&L per wallet, primary toggle, action buttons |
+| Telegram `/wallet` | Summary of the primary wallet only |
+| Telegram `/portfolio` | Aggregate across all wallets |
+| Trade execution | Always the primary unless you switch in the Terminal |
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Portfolio overview" icon="briefcase" href="/web-app/portfolio/overview">
+    The web UI for the multi-wallet list.
+  </Card>
+  <Card title="Distribute & consolidate" icon="arrows-split-up-and-left" href="/web-app/portfolio/distribute-consolidate">
+    Step-by-step for moving funds between wallets.
+  </Card>
+</CardGroup>

@@ -1,0 +1,83 @@
+---
+title: "Wallet operations"
+description: "Deposit, withdraw, and reset — the wallet management surface in the bot."
+icon: "wallet"
+---
+
+Send `/wallet` to open the wallet panel. From there, three operations:
+
+## Deposit
+
+<Steps>
+  <Step title="Tap Deposit">
+    Choose **SOL** or **USDC**.
+  </Step>
+  <Step title="Get the address">
+    The bot replies with your wallet address (copyable) and a QR code.
+  </Step>
+  <Step title="Send funds">
+    From any Solana-compatible source. Confirmation typically arrives in seconds.
+  </Step>
+</Steps>
+
+The bot will DM you when the deposit is detected on-chain (you can disable this in `/settings` notifications).
+
+## Withdraw
+
+<Steps>
+  <Step title="Tap Withdraw">
+    Choose the asset (SOL or USDC).
+  </Step>
+  <Step title="Pick amount">
+    Use a percentage preset (`25 / 50 / 100%` of balance) or type a custom amount.
+  </Step>
+  <Step title="Enter destination">
+    Paste a Solana address. If you have a [withdrawal allowlist](/web-app/settings/security) and the amount exceeds the threshold, the bot only accepts allowlisted destinations.
+  </Step>
+  <Step title="Authorize">
+    Above the security threshold, the bot prompts for 2FA / passkey. Below it, just an Authorize tap.
+  </Step>
+  <Step title="Confirmation">
+    The bot returns the TX link once the network confirms.
+  </Step>
+</Steps>
+
+<Warning>
+  Only send to Solana addresses. Other chains are not recoverable.
+</Warning>
+
+## Reset wallet
+
+The reset flow lets you generate a fresh wallet for the active account. Used rarely — typically when you suspect a wallet has been associated with risky activity and you want a clean address.
+
+<Steps>
+  <Step title="Tap Reset">
+    The bot warns you that any pending withdrawals will be cancelled.
+  </Step>
+  <Step title="Funds check">
+    Reset is blocked if the wallet has a non-zero balance — withdraw or consolidate first.
+  </Step>
+  <Step title="Confirm twice">
+    Reset is irreversible; the bot requires a second confirmation tap.
+  </Step>
+  <Step title="New wallet">
+    A fresh Solana address is generated and shown.
+  </Step>
+</Steps>
+
+The old wallet remains in the system as an archived record (you can still see its trade history), but it's no longer the active wallet for trading.
+
+## Multi-wallet limits in the bot
+
+The bot's `/wallet` command shows your **primary** wallet only. To see and manage all wallets in one view, use the [Portfolio web page](/web-app/portfolio/overview). The bot can switch the primary wallet (in `/settings`), but doesn't have a full list UI.
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Multi-wallet" icon="layer-group" href="/concepts/multi-wallet">
+    The full multi-wallet model.
+  </Card>
+  <Card title="Withdraw security" icon="shield" href="/web-app/settings/security">
+    The allowlist and threshold settings the bot enforces.
+  </Card>
+</CardGroup>

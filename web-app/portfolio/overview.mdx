@@ -1,0 +1,68 @@
+---
+title: "Portfolio overview"
+description: "Multi-wallet list, P&L per wallet, and the action buttons that move funds between them."
+icon: "briefcase"
+---
+
+The **Portfolio** tab is your money home. It lists every wallet on your account, tracks P&L per wallet, and gives you the four core fund operations: Deposit, Withdraw, Distribute, Consolidate.
+
+For why Znox uses a multi-wallet model, see [Multi-wallet](/concepts/multi-wallet).
+
+## Layout
+
+The page has two panes:
+
+- **Left** — list of all your wallets with per-wallet stats.
+- **Right** — detail view of the currently selected wallet, with [Holdings / History / Orders](/web-app/portfolio/holdings-history-orders) tabs.
+
+## Wallet list columns
+
+| Column | Meaning |
+| --- | --- |
+| Wallet | Nickname + truncated public key (with a copy button) |
+| Invested | Total quote-token value put in |
+| PnL | Realized + unrealized profit/loss |
+| W/L | Wins / losses count (closed positions only) |
+| SOL | Current SOL balance |
+
+## Right-side stats card
+
+For the selected wallet:
+
+- **Total balance** — SOL amount + USD equivalent.
+- **Total PnL USD** with absolute and percentage.
+- **Unrealized profits** — open positions only.
+- **Total volume** — lifetime trade volume.
+
+## The four action buttons
+
+<CardGroup cols={2}>
+  <Card title="Deposit" icon="arrow-down-to-line" href="/web-app/portfolio/deposit-withdraw">
+    Get SOL/USDC into the selected wallet.
+  </Card>
+  <Card title="Withdraw" icon="arrow-up-from-bracket" href="/web-app/portfolio/deposit-withdraw">
+    Send SOL/USDC out (with security gate above threshold).
+  </Card>
+  <Card title="Distribute" icon="arrows-split-up-and-left" href="/web-app/portfolio/distribute-consolidate">
+    Split funds across multiple wallets.
+  </Card>
+  <Card title="Consolidate" icon="arrows-to-circle" href="/web-app/portfolio/distribute-consolidate">
+    Merge funds from many wallets into one.
+  </Card>
+</CardGroup>
+
+## Adding wallets
+
+The **Add Wallet** button (top of the list) creates a new Solana wallet on your account. The new wallet starts empty — fund it via Deposit or Distribute.
+
+## PnL Calendar
+
+The **PnL Calendar** button opens a [heatmap view](/web-app/portfolio/pnl-calendar) of your daily P&L history.
+
+## Privacy
+
+The eye-icon at the top of the right pane toggles balance visibility — useful when you're sharing your screen.
+
+## Mobile layout
+
+On mobile, the wallet list is collapsible. Tap a wallet to expand into the detail view; tap the back arrow to return to the list.

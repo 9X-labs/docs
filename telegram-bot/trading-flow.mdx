@@ -1,0 +1,72 @@
+---
+title: "Trading flow"
+description: "Search → token card → Buy or Sell → confirm. The bot trade lifecycle in one page."
+icon: "bolt"
+---
+
+Trading on the bot is a four-step flow. Each step is a single tap or message.
+
+## The flow
+
+<Steps>
+  <Step title="Find the token">
+    Send `/search`, paste a Solana address, or type a symbol (with or without `$`). The bot replies with a **token card**.
+  </Step>
+  <Step title="Read the token card">
+    The card shows: price, market cap, liquidity, holders, security badges, and recent price action. Buttons below: Buy presets, Sell presets, Settings, Chart, Refresh.
+  </Step>
+  <Step title="Pick an amount">
+    Tap a Buy preset (`0.1`, `0.5`, `1` SOL by default — configurable in `/settings`) or **Custom** to type an amount.
+  </Step>
+  <Step title="Authorize">
+    The bot edits the message to show your trade summary and an **Authorize** button. Tap to sign and submit.
+  </Step>
+  <Step title="Status update">
+    The same message updates again with the result: confirmed (with TX link), failed (with reason), or pending. Typically arrives in under 2 seconds.
+  </Step>
+</Steps>
+
+## Selling
+
+Same flow, but tap a **Sell** preset instead of Buy. Presets are denominated in **% of holdings** (`25 / 50 / 100%` by default).
+
+## Custom amounts
+
+Tap **Custom** and type the amount as a reply. Ranges and limits depend on the token (the bot will reject obviously invalid amounts before authorizing).
+
+## Where settings come from
+
+The slippage, MEV protection, Jito tip tier, and priority fee for the trade come from your `/settings` defaults. To override per-trade, tap **Settings** on the token card before authorizing — temporary overrides apply only to that trade.
+
+For the full settings model, see [Per-token settings](/telegram-bot/per-token-settings).
+
+## Confirmations & idempotency
+
+Each Authorize button is single-use. Once tapped, the bot edits the message to remove the button — you can't accidentally double-submit. If the network rejects the trade, the bot tells you and offers a Retry button (which generates a fresh authorization).
+
+## What if the trade fails?
+
+The bot shows a human-readable reason. Common ones:
+
+- **Slippage exceeded** — increase slippage in settings or retry.
+- **Insufficient SOL for fees** — top up your wallet.
+- **Token blocked** — flagged honeypot or known scam contract.
+
+See [Order execution](/concepts/order-execution) for the underlying mechanics.
+
+## After the trade
+
+- Send `/positions` to see your updated open positions.
+- The trade also flows into **Portfolio → History** on the web.
+- If your wallet has [broadcasting on](/concepts/social-trading-loop), the trade posts to the Traders Hub feed.
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Per-token settings" icon="gear" href="/telegram-bot/per-token-settings">
+    Setting and overriding trade defaults.
+  </Card>
+  <Card title="Order execution" icon="route" href="/concepts/order-execution">
+    What slippage and MEV actually do.
+  </Card>
+</CardGroup>

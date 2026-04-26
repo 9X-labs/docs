@@ -1,0 +1,57 @@
+---
+title: "Bot setup"
+description: "Open the bot, send /start, get a wallet. 30 seconds end-to-end."
+icon: "rocket"
+---
+
+The bot has the simplest onboarding of any Znox surface. Three taps, you're trading.
+
+## First-time setup
+
+<Steps>
+  <Step title="Open the bot">
+    Tap [@znox_trading_betabot](https://t.me/znox_trading_betabot) — or search for `znox_trading_betabot` in Telegram. Hit **Start**.
+  </Step>
+  <Step title="Send /start">
+    The bot sends a welcome message. Tap **Continue** in the inline keyboard.
+  </Step>
+  <Step title="Wallet auto-created">
+    A Solana wallet is created on the spot. The bot replies with your wallet address.
+  </Step>
+  <Step title="You're at the main menu">
+    From here you can `/wallet`, `/portfolio`, `/search`, `/positions`, `/settings`, `/referral`, `/help`.
+  </Step>
+</Steps>
+
+## If you already have a Znox account on the web
+
+Same flow as above, but the bot recognizes your Telegram identity and links the bot to your existing account on the first `/start`. Your existing wallets show up immediately — no new wallet is created.
+
+## If you signed up via the bot first
+
+Visit [znox.io](https://znox.io) and sign in with the same Telegram account. Your wallets and trade history follow.
+
+## Funding
+
+Send `/wallet` → tap **Deposit** → choose SOL or USDC → the bot returns your address. Send funds from any Solana-compatible source.
+
+See [Wallet operations](/telegram-bot/wallet-operations) for the full deposit/withdraw flow.
+
+## Language
+
+Send `/settings` → **Language** → pick **English** or **Arabic**. The change is immediate; subsequent messages render in your chosen language.
+
+## What if you accidentally close the bot mid-setup?
+
+Send `/start` again. The bot recognizes you mid-onboarding and continues from where you left off (cached for 24 hours). No duplicate wallets get created.
+
+## Next
+
+<CardGroup cols={2}>
+  <Card title="Commands reference" icon="terminal" href="/telegram-bot/commands">
+    Every command and what it does.
+  </Card>
+  <Card title="First trade" icon="bolt" href="/telegram-bot/trading-flow">
+    Search → buy → confirm.
+  </Card>
+</CardGroup>

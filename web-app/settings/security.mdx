@@ -1,0 +1,82 @@
+---
+title: "Security"
+description: "2FA, passkeys, sessions, withdrawal allowlist, password — everything that protects your account and funds."
+icon: "lock"
+---
+
+The **Security** sub-tab is where you configure the layers from the [Security model](/concepts/security-model). Each section below is independent — set up what makes sense for your risk profile.
+
+## 2FA (TOTP)
+
+<Steps>
+  <Step title="Click Enable 2FA">
+    A QR code + manual key appear.
+  </Step>
+  <Step title="Scan in an authenticator app">
+    Google Authenticator, Authy, 1Password, Aegis — any TOTP app works.
+  </Step>
+  <Step title="Confirm the code">
+    Enter a current 6-digit code from the app to verify the link.
+  </Step>
+  <Step title="Save backup codes">
+    Znox shows a one-time set of backup codes. Save them somewhere safe — they're your fallback if you lose the authenticator.
+  </Step>
+</Steps>
+
+## Passkey
+
+Click **Add Passkey** to register a WebAuthn credential. Your browser will prompt for biometric (FaceID, TouchID, Windows Hello) or a hardware key (YubiKey, etc.). Passkeys are phishing-resistant and stronger than 2FA.
+
+## Active sessions
+
+Table of every browser/device that has a live Znox session.
+
+| Column | Meaning |
+| --- | --- |
+| Device | Browser + OS string |
+| IP | Approximate location |
+| Last active | When the session last touched the API |
+
+Two actions:
+
+- **Log out this session** (per-row) — kills one session.
+- **Log out other sessions** — kills everything except the one you're using right now. Useful after suspected compromise.
+
+## Withdrawal allowlist
+
+Add Solana addresses you'll allow large withdrawals to.
+
+<Steps>
+  <Step title="Click Add address">
+    Modal opens. Paste the Solana destination address and label it.
+  </Step>
+  <Step title="Pass the security challenge">
+    Multi-phase: passkey + 2FA + email confirmation. This is the toughest gate in the app on purpose.
+  </Step>
+  <Step title="Wait for the cooling-off period">
+    The new entry isn't valid for withdrawals immediately. The wait gives you time to revoke if something looks wrong.
+  </Step>
+</Steps>
+
+Once allowlisted, withdrawals above the threshold can only go to those addresses.
+
+## Passphrase export
+
+Export an encrypted passphrase that lets you derive your wallet keys yourself. This is your escape hatch.
+
+The export goes through 2FA + email confirmation + a separate session reauth. Treat the result like a hardware wallet seed: never paste, never share.
+
+## Change password
+
+(Email-auth users only.) Standard old/new/confirm flow.
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Security model" icon="shield" href="/concepts/security-model">
+    The full conceptual stack these settings implement.
+  </Card>
+  <Card title="Deposit & withdraw" icon="arrow-right-arrow-left" href="/web-app/portfolio/deposit-withdraw">
+    Where the allowlist actually gets enforced.
+  </Card>
+</CardGroup>

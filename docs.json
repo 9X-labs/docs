@@ -1,0 +1,362 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "Znox",
+  "description": "Znox is a Solana trading platform with a web app and Telegram bot. Trade tokens, follow other traders, and earn from your network.",
+  "colors": {
+    "primary": "#FF7A1A",
+    "light": "#FF9A4D",
+    "dark": "#E25A00"
+  },
+  "favicon": "/favicon.png",
+  "navigation": {
+    "languages": [
+      {
+        "language": "en",
+        "tabs": [
+          {
+            "tab": "Get Started",
+            "groups": [
+              {
+                "group": "Welcome",
+                "pages": [
+                  "index",
+                  "get-started/create-account",
+                  "get-started/fund-your-wallet",
+                  "get-started/your-first-trade"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Web App",
+            "groups": [
+              {
+                "group": "Markets",
+                "pages": [
+                  "web-app/markets/overview",
+                  "web-app/markets/explore",
+                  "web-app/markets/trending",
+                  "web-app/markets/launchpad",
+                  "web-app/markets/top-traders",
+                  "web-app/markets/social",
+                  "web-app/markets/watchlist"
+                ]
+              },
+              {
+                "group": "Terminal",
+                "pages": [
+                  "web-app/terminal/overview",
+                  "web-app/terminal/order-entry",
+                  "web-app/terminal/settings"
+                ]
+              },
+              {
+                "group": "Traders Hub",
+                "pages": [
+                  "web-app/traders-hub/broadcast",
+                  "web-app/traders-hub/leaderboard",
+                  "web-app/traders-hub/track-wallets",
+                  "web-app/traders-hub/track-socials"
+                ]
+              },
+              {
+                "group": "Portfolio",
+                "pages": [
+                  "web-app/portfolio/overview",
+                  "web-app/portfolio/holdings-history-orders",
+                  "web-app/portfolio/deposit-withdraw",
+                  "web-app/portfolio/distribute-consolidate",
+                  "web-app/portfolio/pnl-calendar"
+                ]
+              },
+              {
+                "group": "Rewards",
+                "pages": [
+                  "web-app/rewards/overview",
+                  "web-app/rewards/referral",
+                  "web-app/rewards/signals",
+                  "web-app/rewards/challenge"
+                ]
+              },
+              {
+                "group": "Settings",
+                "pages": [
+                  "web-app/settings/account",
+                  "web-app/settings/security",
+                  "web-app/settings/notifications",
+                  "web-app/settings/display"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Telegram Bot",
+            "groups": [
+              {
+                "group": "Getting Started",
+                "pages": [
+                  "telegram-bot/overview",
+                  "telegram-bot/setup"
+                ]
+              },
+              {
+                "group": "Commands & Trading",
+                "pages": [
+                  "telegram-bot/commands",
+                  "telegram-bot/trading-flow",
+                  "telegram-bot/wallet-operations",
+                  "telegram-bot/per-token-settings"
+                ]
+              },
+              {
+                "group": "Groups & Broadcasts",
+                "pages": [
+                  "telegram-bot/groups/setup",
+                  "telegram-bot/groups/broadcasts",
+                  "telegram-bot/groups/anti-spam"
+                ]
+              },
+              {
+                "group": "More",
+                "pages": [
+                  "telegram-bot/referral"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Concepts",
+            "groups": [
+              {
+                "group": "Foundations",
+                "pages": [
+                  "concepts/multi-wallet",
+                  "concepts/quote-tokens",
+                  "concepts/dex-routing",
+                  "concepts/order-execution",
+                  "concepts/mev-and-jito",
+                  "concepts/real-time-architecture"
+                ]
+              },
+              {
+                "group": "Social Trading",
+                "pages": [
+                  "concepts/social-trading-loop",
+                  "concepts/slinks"
+                ]
+              },
+              {
+                "group": "Trust & Safety",
+                "pages": [
+                  "concepts/security-model"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "ar",
+        "tabs": [
+          {
+            "tab": "ابدأ هنا",
+            "groups": [
+              {
+                "group": "أهلًا بك",
+                "pages": [
+                  "ar/index",
+                  "ar/get-started/create-account",
+                  "ar/get-started/fund-your-wallet",
+                  "ar/get-started/your-first-trade"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "تطبيق الويب",
+            "groups": [
+              {
+                "group": "الأسواق",
+                "pages": [
+                  "ar/web-app/markets/overview",
+                  "ar/web-app/markets/explore",
+                  "ar/web-app/markets/trending",
+                  "ar/web-app/markets/launchpad",
+                  "ar/web-app/markets/top-traders",
+                  "ar/web-app/markets/social",
+                  "ar/web-app/markets/watchlist"
+                ]
+              },
+              {
+                "group": "Terminal",
+                "pages": [
+                  "ar/web-app/terminal/overview",
+                  "ar/web-app/terminal/order-entry",
+                  "ar/web-app/terminal/settings"
+                ]
+              },
+              {
+                "group": "Traders Hub",
+                "pages": [
+                  "ar/web-app/traders-hub/broadcast",
+                  "ar/web-app/traders-hub/leaderboard",
+                  "ar/web-app/traders-hub/track-wallets",
+                  "ar/web-app/traders-hub/track-socials"
+                ]
+              },
+              {
+                "group": "Portfolio",
+                "pages": [
+                  "ar/web-app/portfolio/overview",
+                  "ar/web-app/portfolio/holdings-history-orders",
+                  "ar/web-app/portfolio/deposit-withdraw",
+                  "ar/web-app/portfolio/distribute-consolidate",
+                  "ar/web-app/portfolio/pnl-calendar"
+                ]
+              },
+              {
+                "group": "المكافآت",
+                "pages": [
+                  "ar/web-app/rewards/overview",
+                  "ar/web-app/rewards/referral",
+                  "ar/web-app/rewards/signals",
+                  "ar/web-app/rewards/challenge"
+                ]
+              },
+              {
+                "group": "الإعدادات",
+                "pages": [
+                  "ar/web-app/settings/account",
+                  "ar/web-app/settings/security",
+                  "ar/web-app/settings/notifications",
+                  "ar/web-app/settings/display"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "بوت Telegram",
+            "groups": [
+              {
+                "group": "ابدأ هنا",
+                "pages": [
+                  "ar/telegram-bot/overview",
+                  "ar/telegram-bot/setup"
+                ]
+              },
+              {
+                "group": "الأوامر والتداول",
+                "pages": [
+                  "ar/telegram-bot/commands",
+                  "ar/telegram-bot/trading-flow",
+                  "ar/telegram-bot/wallet-operations",
+                  "ar/telegram-bot/per-token-settings"
+                ]
+              },
+              {
+                "group": "المجموعات والبثّ",
+                "pages": [
+                  "ar/telegram-bot/groups/setup",
+                  "ar/telegram-bot/groups/broadcasts",
+                  "ar/telegram-bot/groups/anti-spam"
+                ]
+              },
+              {
+                "group": "أخرى",
+                "pages": [
+                  "ar/telegram-bot/referral"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "المفاهيم",
+            "groups": [
+              {
+                "group": "الأساسيّات",
+                "pages": [
+                  "ar/concepts/multi-wallet",
+                  "ar/concepts/quote-tokens",
+                  "ar/concepts/dex-routing",
+                  "ar/concepts/order-execution",
+                  "ar/concepts/mev-and-jito",
+                  "ar/concepts/real-time-architecture"
+                ]
+              },
+              {
+                "group": "التداول الاجتماعي",
+                "pages": [
+                  "ar/concepts/social-trading-loop",
+                  "ar/concepts/slinks"
+                ]
+              },
+              {
+                "group": "الأمان والثقة",
+                "pages": [
+                  "ar/concepts/security-model"
+                ]
+              }
+            ]
+          }
+        ],
+        "navbar": {
+          "links": [
+            {
+              "label": "افتح التطبيق",
+              "href": "https://znox.io"
+            },
+            {
+              "label": "بوت Telegram",
+              "href": "https://t.me/znox_trading_betabot"
+            }
+          ],
+          "primary": {
+            "type": "button",
+            "label": "ابدأ التداول",
+            "href": "https://znox.io"
+          }
+        }
+      }
+    ]
+  },
+  "logo": {
+    "light": "/logo/znox.png",
+    "dark": "/logo/znox.png"
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "Open App",
+        "href": "https://znox.io"
+      },
+      {
+        "label": "Telegram Bot",
+        "href": "https://t.me/znox_trading_betabot"
+      }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "Start Trading",
+      "href": "https://znox.io"
+    }
+  },
+  "contextual": {
+    "options": [
+      "copy",
+      "view",
+      "chatgpt",
+      "claude",
+      "perplexity",
+      "mcp",
+      "cursor",
+      "vscode"
+    ]
+  },
+  "footer": {
+    "socials": {
+      "x": "https://x.com/znox_io",
+      "github": "https://github.com/9X-labs"
+    }
+  }
+}

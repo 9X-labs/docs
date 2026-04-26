@@ -1,0 +1,70 @@
+---
+title: "Deposit & withdraw"
+description: "Get funds in (instant) and out (with a security gate above a threshold)."
+icon: "arrow-right-arrow-left"
+---
+
+Funds flow in and out of Znox wallets via real Solana transactions. Deposits are instant once the network confirms; withdrawals above a threshold pass through a security gate.
+
+## Deposit
+
+<Steps>
+  <Step title="Click Deposit">
+    On the [Portfolio](/web-app/portfolio/overview) page, click **Deposit**. A modal opens with the destination wallet's address.
+  </Step>
+  <Step title="Copy the address or scan the QR">
+    Send SOL or USDC from any Solana-compatible source (exchange, another wallet, friend).
+  </Step>
+  <Step title="Wait for confirmation">
+    Solana confirms in seconds. The Portfolio view reconciles within ~10s of the on-chain confirm.
+  </Step>
+</Steps>
+
+<Warning>
+  Only send Solana network assets. Tokens from other chains (Ethereum USDC, BSC, etc.) are not recoverable.
+</Warning>
+
+## Withdraw
+
+<Steps>
+  <Step title="Click Withdraw">
+    Open the Withdraw modal. Pick the asset (SOL or USDC) and the amount.
+  </Step>
+  <Step title="Enter destination">
+    Paste a Solana address. If you have a [withdrawal allowlist](/web-app/settings/security) and the amount exceeds the threshold, only allowlisted addresses are accepted.
+  </Step>
+  <Step title="Pass the security gate (if required)">
+    Above the threshold, you'll be prompted for: 2FA code, passkey signature, or both, depending on your security settings.
+  </Step>
+  <Step title="Confirm">
+    The withdrawal transaction signs and submits. On-chain confirmation typically arrives in under 2 seconds.
+  </Step>
+</Steps>
+
+## The withdrawal threshold
+
+By default, small withdrawals go through without a security gate — convenience for routine operations. Larger withdrawals trigger the gate. You can:
+
+- **Lower the threshold** (more friction, more safety).
+- **Add an allowlist** — restricts large withdrawals to pre-approved addresses regardless of session state.
+
+Both knobs are in [Settings → Security](/web-app/settings/security).
+
+<Tip>
+  An allowlist + a low threshold is the strongest practical configuration. An attacker who fully takes over your session still can't withdraw to a new address.
+</Tip>
+
+## Network fees
+
+Both deposits and withdrawals pay a small Solana network fee (in SOL, paid by the wallet). Withdraw amounts are reduced by the network fee — you get out slightly less than you input.
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Security model" icon="shield" href="/concepts/security-model">
+    The full layered security model.
+  </Card>
+  <Card title="Multi-wallet" icon="layer-group" href="/concepts/multi-wallet">
+    Why you'd want to consolidate before a big withdrawal.
+  </Card>
+</CardGroup>

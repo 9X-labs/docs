@@ -1,0 +1,48 @@
+---
+title: "Track Socials"
+description: "Track X, Telegram, and Discord accounts — see their token mentions in one feed."
+icon: "hashtag"
+---
+
+**Track Socials** complements [Track Wallets](/web-app/traders-hub/track-wallets). Where Track Wallets surfaces what people are *trading*, Track Socials surfaces what they're *talking about*.
+
+## Adding an account
+
+<Steps>
+  <Step title="Pick a platform">
+    X (Twitter), Telegram, or Discord.
+  </Step>
+  <Step title="Enter the handle">
+    `@username` for X / Telegram, `username#1234` or invite for Discord.
+  </Step>
+  <Step title="Optionally label it">
+    Same as Track Wallets — give it a name.
+  </Step>
+</Steps>
+
+## What you see
+
+A live feed of posts from your tracked accounts, with token mentions highlighted. Each post shows:
+
+- Author + platform icon
+- Post text
+- Tokens mentioned (as clickable badges → Terminal)
+- Post timestamp
+- Link out to the original post
+
+## Why track social separately from wallets
+
+A KOL might tweet about a token before they buy it (or never buy it themselves). Track Socials catches the conversation; Track Wallets catches the action. Together they give you both signal types.
+
+## Right-side panel
+
+The Traders Hub track view has a right-side toggle to switch between:
+
+- **Tracked socials** — the feed described above.
+- **X live feed** — recent posts globally that match any tokens you've trade-history with, even if their authors aren't tracked.
+
+## Limitations
+
+- Telegram group/channel tracking requires the channel to be public or the bot to be a member.
+- X tracking depends on API rate limits — high-volume accounts may have a small (~30s) delay vs. real-time.
+- Discord tracking is currently limited to public servers the Znox bot has been invited to.

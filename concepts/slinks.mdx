@@ -1,0 +1,72 @@
+---
+title: "Slinks (broadcast deeplinks)"
+description: "Slinks are the cached context that lets a 'Quick Ape' tap in a Telegram group resolve to the right broadcast on the right token — and pay rewards to the right person."
+icon: "link"
+---
+
+When a Quick Ape button in a Telegram group leads someone to a token, two things have to be true:
+
+1. The buy needs to **execute against the same token** the broadcast referenced.
+2. The Quick Ape needs to **credit the original broadcaster** so they earn their 25%.
+
+Both rely on a small piece of infrastructure called a **slink** — a *broadcast deeplink* that carries the context from the original signal all the way to the executed trade.
+
+## What a slink is
+
+A slink is a short opaque token (`?slink=KEY`) attached to the Quick Ape button. It points to a cached record on the Znox backend that holds:
+
+- The originating **broadcast ID**
+- The **token mint** the broadcast referenced
+- The **user ID** of the broadcaster (so rewards route correctly)
+- Optionally, the **Telegram group ID** the signal was posted to (for group-level analytics)
+
+The slink itself is meaningless — it's just a key. The cached record behind it is what makes the system work.
+
+## Lifetime
+
+Slinks live in cache for **1 hour** from the moment the broadcast is posted. After that:
+
+- The Quick Ape button still works.
+- The token resolves correctly (the URL itself usually carries the mint as a fallback).
+- But the broadcast attribution is dropped — the trade executes as a normal buy, no rewards routed.
+
+In practice, broadcasts get aped within seconds to minutes. The 1h window covers ~99% of activity.
+
+## Why this design
+
+Three constraints made slinks the right primitive:
+
+<CardGroup cols={2}>
+  <Card title="Telegram URL length" icon="ruler">
+    Telegram inline buttons have URL length limits. We can't pack the full broadcast context into the link itself — a short opaque key is needed.
+  </Card>
+  <Card title="Privacy" icon="eye-slash">
+    Broadcaster identity and group ID shouldn't be readable from the URL. A cache lookup keeps that data server-side.
+  </Card>
+  <Card title="Token swap protection" icon="shield">
+    Without slinks, an attacker could rewrite the URL to point at a different token while keeping the broadcast attribution. Slinks bind broadcast → token at the source.
+  </Card>
+  <Card title="Lifecycle" icon="hourglass">
+    Some broadcasts get aped instantly, some not at all. A short-lived cache is cheaper than persisting every broadcast context forever.
+  </Card>
+</CardGroup>
+
+## What you'll see in practice
+
+You don't interact with slinks directly. They show up only in two places:
+
+- **Telegram Quick Ape button URL** — `https://t.me/znox_trading_betabot?start=ape_<KEY>` (the `KEY` is the slink).
+- **Web app Quick Ape URL** — same pattern via `znox.io` direct.
+
+If you tap a Quick Ape that's older than an hour, the bot still walks you into the trade flow with the right token, but the broadcaster won't earn the signal share on it.
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Social-trading loop" icon="rocket" href="/concepts/social-trading-loop">
+    The broader context slinks support.
+  </Card>
+  <Card title="Group broadcasts" icon="users" href="/telegram-bot/groups/broadcasts">
+    How broadcasts (with their slinks) post into Telegram groups.
+  </Card>
+</CardGroup>

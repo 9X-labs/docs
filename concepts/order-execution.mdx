@@ -1,0 +1,88 @@
+---
+title: "Order execution"
+description: "Slippage, priority fee, market vs limit — the mechanics of getting a trade onto Solana."
+icon: "bolt"
+---
+
+A trade on Solana is a signed transaction that your wallet submits to the network and validators include in a block. Three knobs control how it executes: **slippage**, **priority fee**, and **order type**.
+
+## Slippage
+
+Slippage is the maximum price difference (in percent) you'll accept between when the quote was generated and when the trade actually executes. Solana blocks confirm in ~400ms, but on volatile tokens that's enough for the price to move.
+
+| Slippage | Use when |
+| --- | --- |
+| **0.5%** (default) | Liquid tokens, tight spreads |
+| **1–2%** | Trending tokens, normal volatility |
+| **5%+** | Memecoins, post-launch tokens, fast-moving markets |
+
+If the actual fill would exceed your slippage, the trade reverts on-chain. **Funds aren't lost — the transaction simply doesn't happen.** You'll see a slippage error and can retry with a wider tolerance.
+
+<Warning>
+  Setting slippage to 50%+ effectively disables the safety net. Use only when you understand the risk — bots can sandwich very loose trades.
+</Warning>
+
+## Priority fee
+
+Solana validators order transactions in a block by **compute-unit price** (priority fee). On a quiet network, you don't need any. On a busy network, transactions without priority fees can wait minutes or never confirm.
+
+Znox sets a sensible default priority fee per trade. You can override it per-trade in the Terminal settings or globally in **Terminal Settings → Defaults**.
+
+## Market vs limit orders
+
+<CardGroup cols={2}>
+  <Card title="Market" icon="bolt">
+    Executes at the best available price now. Subject to slippage tolerance. This is the default and what 95% of trades use.
+  </Card>
+  <Card title="Limit" icon="hourglass">
+    Executes only when the token reaches a target price. Lives as an open order in **Portfolio → Orders** until filled or cancelled.
+  </Card>
+</CardGroup>
+
+## What a trade actually does
+
+<Steps>
+  <Step title="Quote">
+    Znox queries DEX pools and computes the best route + expected output (see [DEX routing](/concepts/dex-routing)).
+  </Step>
+  <Step title="Build">
+    A swap instruction is constructed against the chosen venue's program with your slippage tolerance encoded.
+  </Step>
+  <Step title="Bundle (optional)">
+    If MEV protection is on, the transaction is bundled with a Jito tip (see [MEV & Jito](/concepts/mev-and-jito)).
+  </Step>
+  <Step title="Sign">
+    The wallet's key (held in Znox key management) signs the transaction.
+  </Step>
+  <Step title="Submit">
+    Submitted to Solana via the chosen path. Confirmation typically arrives in under 2 seconds.
+  </Step>
+</Steps>
+
+## Failure modes you'll see
+
+<AccordionGroup>
+  <Accordion title="Slippage exceeded">
+    Price moved beyond your tolerance. Increase slippage, or wait for the token to settle.
+  </Accordion>
+  <Accordion title="Insufficient SOL for fees">
+    The wallet doesn't have enough SOL to cover network fee + priority fee + Jito tip. Top up.
+  </Accordion>
+  <Accordion title="Transaction not confirmed in time">
+    The network was congested and your priority fee wasn't competitive. Increase priority fee or wait.
+  </Accordion>
+  <Accordion title="Pool froze or migrated">
+    Rare — the underlying pool changed state mid-trade. Retry; the router will pick a different venue.
+  </Accordion>
+</AccordionGroup>
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="MEV & Jito" icon="shield" href="/concepts/mev-and-jito">
+    The MEV-protection layer on top of execution.
+  </Card>
+  <Card title="DEX routing" icon="route" href="/concepts/dex-routing">
+    How Znox picks the venue for each trade.
+  </Card>
+</CardGroup>

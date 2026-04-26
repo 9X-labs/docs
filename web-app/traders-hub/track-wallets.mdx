@@ -1,0 +1,56 @@
+---
+title: "Track Wallets"
+description: "Add any Solana wallet — friend, KOL, suspect-bot — and watch its trades in real-time."
+icon: "user-tag"
+---
+
+**Track Wallets** lets you add any Solana wallet address and stream its trades live. Useful for following KOLs whose calls aren't on Znox, monitoring competitors, or just keeping an eye on a friend.
+
+This is different from **Following** a Znox broadcaster — Track Wallets works for *any* on-chain wallet, whether or not they use Znox.
+
+## Adding a wallet
+
+<Steps>
+  <Step title="Enter the address">
+    Paste a Solana wallet public key into the **Track Wallets** input.
+  </Step>
+  <Step title="Optionally label it">
+    Add a name so you can recognize it in the list (e.g., "Murad", "Frank degen").
+  </Step>
+  <Step title="It appears in your tracking list">
+    The wallet's recent trades populate immediately, and new trades stream in live.
+  </Step>
+</Steps>
+
+## What you see per tracked wallet
+
+Each trade appears as a row with:
+
+- **Side** (BUY / SELL)
+- **Token** — symbol + logo
+- **Amount** — in token units and quote-token equivalent
+- **Price** at execution
+- **Timestamp**
+- **TX hash** (linkable to a Solana explorer)
+
+## Live updates
+
+Trades are pushed via WebSocket as soon as the parser indexes the transaction. Latency from on-chain to your screen is typically 1–3 seconds. See [Real-time architecture](/concepts/real-time-architecture).
+
+## Acting on a tracked trade
+
+Click any trade row to open the [Terminal](/web-app/terminal/overview) for that token. From there you can decide whether to follow the trade with your own.
+
+<Tip>
+  Track Wallets is read-only by design — no auto-copy. Solana speed makes "see → decide → trade" feasible without giving the platform permission to act on your behalf.
+</Tip>
+
+## Removing a wallet
+
+Each row in the tracked list has a remove button. Removing it stops the live stream; the trade history view keeps a snapshot until refresh.
+
+## Related
+
+<Card title="Track Socials" icon="hashtag" href="/web-app/traders-hub/track-socials">
+  Same idea, but for X / Telegram / Discord accounts.
+</Card>

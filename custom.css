@@ -1,0 +1,157 @@
+/* RTL polish for Arabic pages.
+   Mintlify sets <html lang="ar"> server-side on /ar/* pages but does NOT
+   set dir="rtl". So we use the :lang(ar) CSS pseudo-class — it matches on
+   first paint, no JS needed, no FOUC. */
+
+html:lang(ar) {
+  direction: rtl;
+}
+
+/* ----- Brand: bump nav-logo size on both languages.
+   Default Mintlify h-7 (28px) is too small for our 1024×1024 app-icon
+   logo to look readable. Bumping to h-10 (40px). */
+.nav-logo {
+  height: 2.5rem !important;
+}
+
+/* ----- Prose alignment ----- */
+html:lang(ar) p,
+html:lang(ar) li,
+html:lang(ar) h1,
+html:lang(ar) h2,
+html:lang(ar) h3,
+html:lang(ar) h4,
+html:lang(ar) h5,
+html:lang(ar) h6 {
+  text-align: right;
+}
+
+/* Code stays LTR — code is always read left-to-right */
+html:lang(ar) pre,
+html:lang(ar) code,
+html:lang(ar) kbd {
+  direction: ltr;
+  text-align: left;
+  unicode-bidi: embed;
+}
+
+html:lang(ar) table th,
+html:lang(ar) table td {
+  text-align: right;
+}
+
+/* ============================================================================
+   Tailwind class overrides — DevTools-confirmed root causes.
+   ============================================================================ */
+
+/* Tailwind's space-x-* uses --tw-space-x-reverse. Setting to 1 swaps the
+   margin direction so navbar items don't collapse. */
+html:lang(ar) [class*='space-x-'] > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 1 !important;
+}
+
+/* ml-auto -> mr-auto in RTL (push to the inline-end side) */
+html:lang(ar) .ml-auto {
+  margin-left: 0 !important;
+  margin-right: auto !important;
+}
+
+html:lang(ar) .mr-auto {
+  margin-right: 0 !important;
+  margin-left: auto !important;
+}
+
+/* Small icon margins flipped */
+html:lang(ar) .mr-0\.5 {
+  margin-right: 0 !important;
+  margin-left: 0.125rem !important;
+}
+html:lang(ar) .ml-0\.5 {
+  margin-left: 0 !important;
+  margin-right: 0.125rem !important;
+}
+
+/* Mirror chevron-style SVGs in CTAs (Start Trading, navbar items, etc.) */
+html:lang(ar) a[class*='group'] svg,
+html:lang(ar) button[class*='group'] svg,
+html:lang(ar) .navbar-link svg {
+  transform: scaleX(-1);
+}
+
+/* Asymmetric border-radius classes — flip the rounded side */
+html:lang(ar) .rounded-l-xl {
+  border-radius: 0 0.75rem 0.75rem 0 !important;
+}
+html:lang(ar) .rounded-r-xl {
+  border-radius: 0.75rem 0 0 0.75rem !important;
+}
+html:lang(ar) .rounded-l-lg {
+  border-radius: 0 0.5rem 0.5rem 0 !important;
+}
+html:lang(ar) .rounded-r-lg {
+  border-radius: 0.5rem 0 0 0.5rem !important;
+}
+
+/* Asymmetric border classes */
+html:lang(ar) .border-r-0 {
+  border-right-width: 1px !important;
+  border-left-width: 0 !important;
+}
+html:lang(ar) .border-l-0 {
+  border-left-width: 1px !important;
+  border-right-width: 0 !important;
+}
+
+/* Left navigation sidebar (the page list — "أهلًا بك في Znox", "أنشئ حسابك"...).
+   In LTR it pins to the left of the viewport via implicit/parent positioning.
+   In RTL the lack of explicit anchoring leaves it floating mid-screen,
+   overlapping the main content. Pin it to right:0 so it sits at the inline-start
+   edge in RTL (visual right). */
+html:lang(ar) .fixed.bottom-0[class*='right-auto'],
+html:lang(ar) .lg\:block.fixed[class*='w-\[18rem\]'] {
+  right: 0 !important;
+  left: auto !important;
+}
+
+/* Main content container's directional padding/margin.
+   The container uses lg:pl-[23.7rem] to reserve space for the LEFT nav sidebar
+   in LTR. In RTL the nav sidebar moves to the right edge, so the padding must
+   move to the inline-end (visual right) side. Without this, the heading and
+   prose extend into the sidebar's column, causing pixel-level text overlap. */
+html:lang(ar) .lg\:pl-\[23\.7rem\] {
+  padding-left: 0.25rem !important;
+  padding-right: 23.7rem !important;
+}
+
+html:lang(ar) .lg\:-ml-12 {
+  margin-left: 0 !important;
+  margin-right: -3rem !important;
+}
+
+/* ============================================================================
+   Steps component (Mintlify <Steps>): the numbered-circle column.
+   In LTR the circle sits on the left of each step; the content reserves 32px
+   on its left (pl-8) for the circle, and the circle wrapper offsets itself
+   13px left of its natural position (ml-[-13px]) to align with the connector.
+   In RTL the circle moves to the right but the physical paddings/margins
+   stay on the left, leaving zero space and clipping the circle into the
+   heading text. Mirror them all.
+   ============================================================================ */
+
+/* Steps root gutter */
+html:lang(ar) .steps.ml-3\.5 {
+  margin-left: 0 !important;
+  margin-right: 0.875rem !important;
+}
+
+/* Step content: pl-8 (32px reserve for circle) flips to right side */
+html:lang(ar) .step > .pl-8.pr-px {
+  padding-left: 1px !important;
+  padding-right: 2rem !important;
+}
+
+/* Circle wrapper offset: ml-[-13px] flips to mr-[-13px] */
+html:lang(ar) .step .absolute.ml-\[-13px\] {
+  margin-left: 0 !important;
+  margin-right: -13px !important;
+}

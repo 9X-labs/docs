@@ -1,0 +1,51 @@
+---
+title: "Commands reference"
+description: "Every slash command the bot supports, with a one-line description and a link to the relevant page."
+icon: "terminal"
+---
+
+The bot accepts the following slash commands. Use them anywhere in a DM with the bot, or as a reply in a group where the bot is present.
+
+| Command | What it does | Details |
+| --- | --- | --- |
+| `/start` | Onboards new users (creates wallet) or returns to main menu for existing users | [Setup](/telegram-bot/setup) |
+| `/help` | Shows the command list with brief explanations | — |
+| `/wallet` | Wallet summary: balance, recent activity, deposit/withdraw buttons | [Wallet operations](/telegram-bot/wallet-operations) |
+| `/portfolio` | Aggregate view across all your wallets — positions, P&L, total value | [Portfolio overview](/web-app/portfolio/overview) |
+| `/search` | Search for a token by symbol or address; opens the token card | [Trading flow](/telegram-bot/trading-flow) |
+| `/positions` | List your open positions with current P&L | — |
+| `/settings` | Per-token buy/sell defaults (slippage, priority fee, MEV, Jito) | [Per-token settings](/telegram-bot/per-token-settings) |
+| `/referral` | Your referral code, link, and earnings dashboard | [Referral](/telegram-bot/referral) |
+
+## Sending tokens directly
+
+Beyond slash commands, the bot also accepts:
+
+- **A Solana token address** as a plain message — opens the token card directly.
+- **A token symbol** (with `$` or without) — same.
+- **A reply to a bot message** — interpreted as input for the current flow (e.g., custom amount).
+
+## In groups
+
+When the bot is added to a group as admin, it only responds to:
+
+- Messages that **mention the bot** (e.g., `@znox_trading_betabot`).
+- Messages that **reply** to a previous bot message.
+- A **pure Solana address** (no other text).
+
+This anti-spam rule is documented in detail at [Anti-spam](/telegram-bot/groups/anti-spam).
+
+## Inline keyboards
+
+Most flows use inline button menus rather than typed text. After `/start` (or any command), the bot replies with a message that has buttons. Tap to navigate; the bot edits the message in place to show the next step.
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Trading flow" icon="bolt" href="/telegram-bot/trading-flow">
+    The buy/sell flow that uses /search and inline buttons.
+  </Card>
+  <Card title="Wallet operations" icon="wallet" href="/telegram-bot/wallet-operations">
+    Deposit, withdraw, reset.
+  </Card>
+</CardGroup>

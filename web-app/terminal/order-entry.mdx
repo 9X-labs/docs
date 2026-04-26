@@ -1,0 +1,62 @@
+---
+title: "Order entry"
+description: "Every control in the Buy/Sell panel: presets, slippage, MEV, Jito tier, market vs limit."
+icon: "bolt"
+---
+
+The order entry panel sits on the right of the [Terminal](/web-app/terminal/overview). It has two tabs — **BUY** and **SELL** — and the same set of controls underneath each.
+
+## Buy
+
+<Steps>
+  <Step title="Pick an amount">
+    Click a preset (`0.1`, `0.5`, `1` SOL — configurable in [Settings](/web-app/terminal/settings)) or type a custom amount.
+  </Step>
+  <Step title="See estimated output">
+    The token amount you'll receive at the current quote shows below the input. This includes route + post-slippage estimate.
+  </Step>
+  <Step title="Adjust slippage">
+    Default is fine for liquid tokens. Increase for memecoins or volatile periods. See [Order execution](/concepts/order-execution).
+  </Step>
+  <Step title="Check MEV protection">
+    On by default. The Jito tier dropdown controls how aggressively your trade gets included. See [MEV & Jito](/concepts/mev-and-jito).
+  </Step>
+  <Step title="Hit BUY">
+    Confirm the dialog. The trade signs and submits.
+  </Step>
+</Steps>
+
+## Sell
+
+Same flow as Buy, but the input is denominated in **% of holdings** rather than SOL/USDC. Presets are typically `25 / 50 / 75 / 100%`. You can also enter an absolute token amount.
+
+<Tip>
+  "Sell 100%" on SOL leaves a tiny dust amount intentionally — see [Quote tokens](/concepts/quote-tokens) for why.
+</Tip>
+
+## Controls explained
+
+| Control | What it does |
+| --- | --- |
+| Preset amount buttons | Quick-select common sizes |
+| Slippage % | Max price drift you'll accept (see [Order execution](/concepts/order-execution)) |
+| MEV protection toggle | On = bundle through Jito, Off = public mempool |
+| Jito tip tier | Good / Fast / Turbo / Custom (see [MEV & Jito](/concepts/mev-and-jito)) |
+| Priority fee display | Solana network fee, computed from current congestion |
+| Estimated output | Token amount at current quote, post-slippage |
+| Market / Limit | Market = execute now; Limit = open order at a target price |
+
+## Quote token
+
+The whole panel respects your selected quote token (SOL or USDC). Switch in [Settings → Display](/web-app/settings/display).
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Terminal settings" icon="gear" href="/web-app/terminal/settings">
+    Set your defaults so you don't tweak per-trade.
+  </Card>
+  <Card title="MEV & Jito" icon="shield" href="/concepts/mev-and-jito">
+    The protection layer in detail.
+  </Card>
+</CardGroup>

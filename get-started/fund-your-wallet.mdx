@@ -1,0 +1,74 @@
+---
+title: "Fund your wallet"
+description: "Send SOL or USDC to your Znox wallet to start trading."
+icon: "wallet"
+---
+
+To trade on Znox you need SOL in your wallet. SOL pays for the trade itself and for the small Solana network fee on every swap. USDC works as an alternative quote token.
+
+## Find your deposit address
+
+<Tabs>
+  <Tab title="Web App">
+    <Steps>
+      <Step title="Go to Portfolio">
+        Click **Portfolio** in the top nav.
+      </Step>
+      <Step title="Click Deposit">
+        Use the **Deposit** action button. A modal appears with your wallet address and a QR code.
+      </Step>
+      <Step title="Copy or scan">
+        Send SOL or USDC to that address from any exchange or wallet.
+      </Step>
+    </Steps>
+  </Tab>
+  <Tab title="Telegram Bot">
+    <Steps>
+      <Step title="Send /wallet">
+        The bot replies with your wallet summary.
+      </Step>
+      <Step title="Tap Deposit">
+        Choose **SOL** or **USDC**. The bot returns your address (copyable).
+      </Step>
+    </Steps>
+  </Tab>
+</Tabs>
+
+<Warning>
+  Only send SOL or SPL tokens (like USDC) on the **Solana** network. Other chains will be lost.
+</Warning>
+
+## How much to start with
+
+<CardGroup cols={2}>
+  <Card title="Bare minimum" icon="circle-info">
+    **0.05 SOL** covers a couple of small swaps plus network fees. Good for trying things out.
+  </Card>
+  <Card title="Comfortable start" icon="check">
+    **0.5–1 SOL** lets you size positions properly and pay Jito tips for MEV protection.
+  </Card>
+</CardGroup>
+
+## Why your balance might not show up immediately
+
+Solana confirms in seconds, but the Znox UI polls and reconciles every few seconds. If your deposit doesn't appear within ~30s:
+
+- Check the transaction on a Solana explorer using the address you sent to.
+- If the explorer confirms it, the Portfolio view will sync on the next refresh.
+- If the explorer doesn't show it, the deposit hasn't been broadcast yet — wait a moment.
+
+<Tip>
+  If you sent the wrong network or wrong token, the funds are not on Solana and will not appear here. There is nothing Znox support can do to recover them.
+</Tip>
+
+## Multi-wallet basics
+
+You can hold many wallets in one Znox account. The first one is the **primary** — that's the wallet that trades execute on by default. Add more from **Portfolio → Add Wallet**.
+
+For the full model, see [Multi-wallet](/concepts/multi-wallet).
+
+## Next
+
+<Card title="Place your first trade" icon="bolt" href="/get-started/your-first-trade">
+  Search a token, buy, confirm.
+</Card>

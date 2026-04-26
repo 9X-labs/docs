@@ -1,0 +1,47 @@
+---
+title: "Terminal settings"
+description: "Defaults that apply to every trade — slippage, priority fee, MEV, Jito tier, plus expert-mode toggles."
+icon: "gear"
+---
+
+The gear icon at the top of the Terminal opens the **Terminal Settings** modal. These are your global defaults — every trade uses them unless you override on a per-trade basis in the order entry panel.
+
+## What you can set
+
+| Setting | Default | Notes |
+| --- | --- | --- |
+| Default slippage | 0.5% | Per-trade override available |
+| Default priority fee | Auto | Auto = adapts to network congestion. Override with a fixed lamport value |
+| MEV protection | On | See [MEV & Jito](/concepts/mev-and-jito) |
+| Default Jito tier | Good | Options: Good / Fast / Turbo / Custom |
+| Buy preset amounts | `0.1 / 0.5 / 1` SOL | Comma-separated, in your quote token |
+| Sell preset percentages | `25 / 50 / 75 / 100%` | |
+| Expert mode | Off | Reveals advanced controls (custom gas, manual route selection) |
+| Confirm all transactions | On | When off, repeated buys skip the confirm dialog |
+
+## Expert mode
+
+Turning **Expert mode** on adds:
+
+- **Custom gas limit** override for the swap transaction.
+- **Manual route override** — bypass auto-selection and force a specific DEX.
+- **Front-running protection toggle** on individual trades.
+
+<Warning>
+  Expert mode controls aren't safety rails — bad values can result in failed transactions or worse fills. Only use these if you understand what they do.
+</Warning>
+
+## Settings sync between web and bot
+
+Buy/sell defaults (slippage, priority fee, MEV, Jito tier, presets) are stored at the account level and shared between the web app and the [Telegram bot's per-token settings](/telegram-bot/per-token-settings). Change one, the other updates.
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Order entry" icon="bolt" href="/web-app/terminal/order-entry">
+    The per-trade controls these settings default.
+  </Card>
+  <Card title="Order execution" icon="route" href="/concepts/order-execution">
+    What slippage and priority fee actually do.
+  </Card>
+</CardGroup>

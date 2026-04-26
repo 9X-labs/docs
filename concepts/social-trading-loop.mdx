@@ -1,0 +1,83 @@
+---
+title: "The social-trading loop"
+description: "Broadcast a trade. Others Quick Ape it. You earn 25% of their fees — forever. This is the core mechanic that makes Znox different."
+icon: "rocket"
+---
+
+Most trading apps stop at "you trade." Znox adds a second loop on top: **what you trade can be broadcast to the world, and when others copy it, you earn**.
+
+The whole flow is built around a primitive called a **broadcast**.
+
+## The four-step loop
+
+<Steps>
+  <Step title="You trade">
+    You buy or sell a token from any wallet that has broadcasting enabled.
+  </Step>
+  <Step title="Znox broadcasts">
+    A signal card is created in the **Traders Hub → Broadcast** feed and (optionally) posted to any Telegram groups you've linked to that wallet.
+  </Step>
+  <Step title="Others Quick Ape">
+    Anyone seeing the broadcast can hit **Quick Ape** to place the same buy with one click. They choose their own size.
+  </Step>
+  <Step title="You earn">
+    Every Quick Ape pays a fee. **25% of that fee goes to you** — the broadcaster — for as long as the apers keep trading the position you opened.
+  </Step>
+</Steps>
+
+## What a broadcast looks like
+
+A broadcast card carries:
+
+- **Trader identity** — username, avatar, optional X badge
+- **What was traded** — `BOUGHT $5 of SOL @ $49.68B mcap`
+- **Token chart** — price action since the broadcast, with your entry marked
+- **Reactions** — 8 emoji buttons (🔥🚀💰💀👍❤️😂😯) any viewer can tap
+- **Comments** — threaded discussion
+- **Quick Ape button** — one-click buy at the viewer's preset amount
+- **Ape count** — how many people have already aped it
+
+## Where broadcasts appear
+
+<CardGroup cols={2}>
+  <Card title="Traders Hub feed" icon="rss">
+    The main social surface. Every broadcast lands here, sorted **NEWEST** or filtered to **FOLLOWING**.
+  </Card>
+  <Card title="Telegram groups" icon="telegram">
+    If a wallet's broadcasts are wired to a TG group (you added the bot as admin), the same signal posts there too.
+  </Card>
+</CardGroup>
+
+## The reward math
+
+| Source | Share |
+| --- | --- |
+| **Referral** (someone you invited trades) | 50% of their fees |
+| **Signal** (someone Quick Apes your broadcast) | 25% of their fees |
+| **Both** (your referral Quick Apes your broadcast) | 25% referral + 25% signal = 50% combined |
+
+Earnings accrue forever — there is no cap, no expiry. As long as the person keeps trading the position they aped, you keep earning.
+
+The breakdown chart on the **Rewards → Referral** page visualizes this — orange line is referral, purple is signal, green dashed is the combined ref+signal case.
+
+## Turning broadcasts on
+
+Each wallet has its own broadcast settings — you choose which wallets broadcast and which stay silent. The default for new wallets is **off**. Enable it in **Portfolio → wallet → Broadcast settings**.
+
+## Why this exists
+
+Most copy-trading platforms create a two-class system: a small group of "verified providers" who get paid, everyone else who pays. Znox's loop is symmetric — anyone can broadcast, anyone can Quick Ape, and anyone can earn from either side. The only filter is whether your trades are good enough that others want to copy them.
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Slinks" icon="link" href="/concepts/slinks">
+    The deeplink primitive that makes the loop work across Telegram and the web.
+  </Card>
+  <Card title="Rewards overview" icon="circle-dollar" href="/web-app/rewards/overview">
+    Where you see your earnings from the loop in numbers.
+  </Card>
+  <Card title="Broadcast" icon="tower-broadcast" href="/web-app/traders-hub/broadcast">
+    The Traders Hub feed UI in detail.
+  </Card>
+</CardGroup>

@@ -1,0 +1,75 @@
+---
+title: "Distribute & consolidate"
+description: "Move funds between your own wallets — split out or pull together — without touching an external service."
+icon: "arrows-split-up-and-left"
+---
+
+Distribute and Consolidate are the two operations that let you reshape your money across the [multi-wallet](/concepts/multi-wallet) model. Both are real on-chain transfers.
+
+## Distribute
+
+Split funds from one source wallet across many destination wallets.
+
+<Steps>
+  <Step title="Click Distribute">
+    From [Portfolio](/web-app/portfolio/overview), click **Distribute**.
+  </Step>
+  <Step title="Pick the source">
+    Which of your wallets the funds come from.
+  </Step>
+  <Step title="Pick destinations">
+    Select target wallets. You can include any combination of your existing wallets.
+  </Step>
+  <Step title="Set splits">
+    Either equal-split, or set a custom % per destination. The total must sum to 100% of the amount being moved.
+  </Step>
+  <Step title="Confirm">
+    Znox builds and submits the transactions. Each destination receives its share on-chain.
+  </Step>
+</Steps>
+
+### When to distribute
+
+- After a big deposit, to spread capital across strategy-specific wallets.
+- Before a wave of risky trades, so a single wallet's loss doesn't expose your full balance.
+- To set up sub-wallets for [broadcasting](/concepts/social-trading-loop) different strategies separately.
+
+## Consolidate
+
+Pull funds from many wallets into one (typically your primary).
+
+<Steps>
+  <Step title="Click Consolidate">
+    From Portfolio, click **Consolidate**.
+  </Step>
+  <Step title="Pick the destination">
+    Usually the primary wallet, but you can choose any.
+  </Step>
+  <Step title="Pick sources">
+    Select which wallets to drain.
+  </Step>
+  <Step title="Confirm">
+    Each source signs an outgoing transfer to the destination.
+  </Step>
+</Steps>
+
+### When to consolidate
+
+- Before a large withdrawal — easier to clear the security gate from one wallet than many.
+- When closing out a strategy — collapse the dedicated wallet into your main one.
+- For tax reporting — sometimes simpler to track P&L from a single consolidated wallet.
+
+## Both operations are on-chain
+
+These are real Solana transfers — they cost network fees and create transaction history visible to anyone (including [tracked wallets](/web-app/traders-hub/track-wallets) following your address). They're not internal accounting moves.
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Multi-wallet model" icon="layer-group" href="/concepts/multi-wallet">
+    Why you'd want multiple wallets in the first place.
+  </Card>
+  <Card title="Deposit & withdraw" icon="arrow-right-arrow-left" href="/web-app/portfolio/deposit-withdraw">
+    The other two fund operations.
+  </Card>
+</CardGroup>

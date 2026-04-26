@@ -1,0 +1,62 @@
+---
+title: "إدخال الأوامر"
+description: "كلّ تحكّم في لوحة Buy/Sell: المبالغ الجاهزة، slippage، MEV، طبقة Jito، السوقيّة مقابل المحدَّدة."
+icon: "bolt"
+---
+
+لوحة إدخال الأوامر تجلس على يمين [Terminal](/ar/web-app/terminal/overview). لها تبويبان — **BUY** و**SELL** — وبنفس مجموعة عناصر التحكّم تحت كلٍّ منهما.
+
+## شراء
+
+<Steps>
+  <Step title="اختر مبلغًا">
+    اضغط مبلغًا جاهزًا (`0.1`, `0.5`, `1` SOL — قابلة للضبط في [الإعدادات](/ar/web-app/terminal/settings)) أو اكتب مبلغًا مخصَّصًا.
+  </Step>
+  <Step title="انظر الناتج المقدَّر">
+    كميّة الرمز التي ستحصل عليها بالعرض الحاليّ تظهر تحت المدخل. تشمل التوجيه + التقدير بعد slippage.
+  </Step>
+  <Step title="اضبط slippage">
+    الافتراضيّ يكفي للرموز السائلة. ارفعه للعملات الميمية أو الفترات المتقلّبة. راجع [تنفيذ الأوامر](/ar/concepts/order-execution).
+  </Step>
+  <Step title="افحص حماية MEV">
+    مفعَّلة افتراضيًّا. قائمة طبقة Jito تتحكّم في مدى قوّة إدراج صفقتك. راجع [MEV وJito](/ar/concepts/mev-and-jito).
+  </Step>
+  <Step title="اضغط BUY">
+    أكِّد النافذة. تُوقَّع الصفقة وتُرسل.
+  </Step>
+</Steps>
+
+## بيع
+
+تدفّق مماثل للشراء، لكنّ المدخل بـ **% من المراكز** بدل SOL/USDC. المبالغ الجاهزة عادةً `25 / 50 / 75 / 100%`. تستطيع إدخال كميّة رمز مطلقة أيضًا.
+
+<Tip>
+  "بيع 100%" على SOL يترك مبلغًا ضئيلًا متبقّيًا عمدًا — راجع [العملات الأساسيّة](/ar/concepts/quote-tokens) للسبب.
+</Tip>
+
+## شرح عناصر التحكّم
+
+| التحكّم | ماذا يفعل |
+| --- | --- |
+| أزرار المبالغ الجاهزة | اختيار سريع للأحجام الشائعة |
+| Slippage % | أقصى انجراف سعر تقبله (راجع [تنفيذ الأوامر](/ar/concepts/order-execution)) |
+| مفتاح حماية MEV | مفعَّل = جمع عبر Jito، مطفأ = mempool عامّ |
+| طبقة إكراميّة Jito | Good / Fast / Turbo / Custom (راجع [MEV وJito](/ar/concepts/mev-and-jito)) |
+| عرض priority fee | رسم شبكة Solana، يُحسب من الازدحام الحاليّ |
+| الناتج المقدَّر | كميّة الرمز بالعرض الحاليّ، بعد slippage |
+| Market / Limit | Market = تنفيذ الآن؛ Limit = أمر مفتوح بسعر هدف |
+
+## العملة الأساسيّة
+
+كامل اللوحة تحترم العملة الأساسيّة التي اخترتها (SOL أو USDC). بدِّل من [Settings → Display](/ar/web-app/settings/display).
+
+## ذات صلة
+
+<CardGroup cols={2}>
+  <Card title="إعدادات Terminal" icon="gear" href="/ar/web-app/terminal/settings">
+    اضبط افتراضيّاتك حتى لا تعدّلها لكلّ صفقة.
+  </Card>
+  <Card title="MEV وJito" icon="shield" href="/ar/concepts/mev-and-jito">
+    طبقة الحماية بالتفصيل.
+  </Card>
+</CardGroup>

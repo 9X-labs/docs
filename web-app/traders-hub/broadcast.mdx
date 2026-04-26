@@ -1,0 +1,54 @@
+---
+title: "Broadcast"
+description: "The social feed of trades. Watch what others are buying, react, comment, and Quick Ape with one click."
+icon: "tower-broadcast"
+---
+
+The **Broadcast** sub-tab is the heart of Znox's social-trading loop. Every trade from a wallet with broadcasting enabled shows up here as a card. You can react, comment, or copy the trade.
+
+For the underlying mechanic, see [Social-trading loop](/concepts/social-trading-loop).
+
+## Anatomy of a broadcast card
+
+- **Trader** — username + avatar + (optional) X badge
+- **Action** — `BOUGHT $5 of SOL @ $49.68B mcap` (or `SOLD`)
+- **Chart** — token price action since the broadcast, with the entry point marked
+- **Reactions** — eight emoji buttons (🔥🚀💰💀👍❤️😂😯) with live counts
+- **Comments icon** — opens nested-thread comments
+- **Share icon** — copy the broadcast link
+- **Quick Ape button** — one-click buy at your preset amount
+- **Ape count** — how many people have already aped this trade
+
+## Filter toggle
+
+- **NEWEST** — chronological, all broadcasts you can see.
+- **FOLLOWING** — only broadcasts from traders you follow.
+
+## Quick Ape
+
+Tap **Quick Ape** to place the same buy at your preset SOL amount. This:
+
+1. Routes the trade against the same token the broadcast referenced.
+2. Credits 25% of the fee to the broadcaster as a [Signal reward](/web-app/rewards/signals).
+3. If you were referred by someone, splits another 25% to your referrer.
+
+Your Quick Ape preset is the amount you're comfortable risking on a one-tap copy — set it in [Terminal Settings](/web-app/terminal/settings). Don't make it bigger than you'd lose without flinching.
+
+## Reactions and comments
+
+Reactions are public — your username appears in the count tooltip. Comments are threaded; you can reply to specific comments. Both are real-time — see [Real-time architecture](/concepts/real-time-architecture).
+
+## Telegram group integration
+
+If you've added the Znox bot to a Telegram group as admin, you can wire one of your wallets to broadcast there. Trades from that wallet post both to the Traders Hub feed *and* to the linked TG group with a Quick Ape button. Setup is in **Portfolio → wallet → Broadcast settings**, or see [Telegram groups](/telegram-bot/groups/setup).
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Social-trading loop" icon="rocket" href="/concepts/social-trading-loop">
+    The model in full — broadcaster, aper, rewards.
+  </Card>
+  <Card title="Slinks" icon="link" href="/concepts/slinks">
+    The deeplink primitive that makes Quick Ape work across surfaces.
+  </Card>
+</CardGroup>

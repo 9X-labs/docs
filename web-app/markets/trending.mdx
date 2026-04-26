@@ -1,0 +1,62 @@
+---
+title: "Trending"
+description: "What's moving right now, sliced by timeframe. The richest set of token-quality columns in the whole app."
+icon: "fire"
+---
+
+**Trending** is the main token-screening view. Pick a timeframe, scan the table, click into anything interesting.
+
+## Timeframes
+
+The pills at the top — `5m / 30m / 1h / 12h / 24h` — change the period over which "trending" is computed. Shorter windows favor volatile microcaps; longer windows surface tokens with sustained momentum.
+
+## Columns
+
+A lot is packed into the table. Here's what each header means:
+
+| Column | Meaning |
+| --- | --- |
+| `#` | Rank in the current timeframe |
+| Token | Symbol + name + logo |
+| Price | Current quote |
+| **CHG** | Price change in the timeframe |
+| **MCAP** | Market cap |
+| **LIQ** | Pool liquidity in USD |
+| **VOL** | Trade volume in the timeframe |
+| **HOLD** | Number of holders |
+| **B/S** | Buys / sells count in the timeframe (e.g., `9/12` = 9 buys, 12 sells) |
+| **LP%** | % of supply in the liquidity pool. Higher = healthier float |
+| **TOP10** | % of supply held by top 10 wallets. High values flag whale risk |
+| **DEV** | % held by the deployer. High values flag dump risk |
+| **SNP** | Sniper holders count — wallets that bought in the first block |
+| **SOCIALS** | Twitter / website badges if present |
+| **VERIFY** | ✓ if contract is verified / passes safety checks |
+
+## Right-side actions
+
+Each row has two buttons:
+
+- **JUP** — open Jupiter Aggregator's view of this token in a new tab.
+- **CA** — copy the contract address.
+
+## How to read the table fast
+
+1. **CHG** + **VOL** show momentum. Big up move with low volume = thin tape, suspect.
+2. **TOP10** + **DEV** are concentration risk. >50% top-10 means a few whales control price action.
+3. **SNP** spikes on tokens snipers piled into at launch — sometimes an alpha signal, sometimes a coordinated pump.
+4. **LP%** under 50% means most supply isn't in the pool. Deeper LPs trade with less slippage.
+
+<Tip>
+  When `B/S` heavily favors sells but `CHG` is positive, the few buys are very large — possibly the dev or a whale absorbing supply. Look at **TOP10** to verify.
+</Tip>
+
+## See also
+
+<CardGroup cols={2}>
+  <Card title="Top Traders" icon="trophy" href="/web-app/markets/top-traders">
+    Pivot from "what's moving" to "who's making money on it."
+  </Card>
+  <Card title="Terminal" icon="chart-line" href="/web-app/terminal/overview">
+    Click any row to land on the per-token trade page.
+  </Card>
+</CardGroup>

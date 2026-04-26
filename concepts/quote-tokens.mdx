@@ -1,0 +1,53 @@
+---
+title: "Quote tokens (SOL vs USDC)"
+description: "Every trade has a quote currency — SOL by default, USDC as an alternative. The choice affects how prices, P&L, and presets are displayed."
+icon: "coins"
+---
+
+When you trade `TOKEN_X`, you trade *something else* against it. That something else is the **quote token**. On Znox, the quote token is either **SOL** or **USDC**.
+
+## How the quote token affects what you see
+
+<CardGroup cols={2}>
+  <Card title="Prices" icon="dollar-sign">
+    A token's price is shown in your selected quote: e.g., `0.000123 SOL` or `$0.0273`.
+  </Card>
+  <Card title="P&L" icon="chart-line">
+    Realized and unrealized P&L are tracked in the quote token your position was opened in.
+  </Card>
+  <Card title="Preset amounts" icon="grid">
+    Buy/sell presets are denominated in your quote: `0.1 / 0.5 / 1 SOL` vs `10 / 50 / 200 USDC`.
+  </Card>
+  <Card title="Order entry" icon="square-check">
+    The "amount" field accepts the quote token unless you switch to entering token units.
+  </Card>
+</CardGroup>
+
+## When SOL is the right choice
+
+- **You hold mostly SOL.** Trading SOL→token is one swap; trading USDC→token might involve an extra hop.
+- **You want fast execution.** Most Solana liquidity is in SOL pairs, so SOL routes are typically deeper and tighter.
+- **You're following the broadcast feed.** Quick Ape always quotes in SOL.
+
+## When USDC is the right choice
+
+- **You're sizing in dollars.** "How many USDC am I risking" is easier to reason about than fluctuating SOL value.
+- **You want stable P&L.** A token can pump in SOL terms and dump in USDC terms simultaneously if SOL itself moves. USDC removes that ambiguity.
+- **You hold mostly stablecoins.** No reason to convert.
+
+## SOL is special
+
+SOL is the network's gas token *and* a tradable asset. Two consequences:
+
+1. **Network fees.** Every Solana transaction pays a tiny fee in SOL — even when you're paying for a USDC-quoted trade. You always need a little SOL in the wallet.
+2. **Selling 100% SOL leaves a residual.** A wallet with literally zero SOL can't sign anything, including a deposit-receive ack. We leave a small dust amount intentionally.
+
+## Switching the default
+
+Set your preferred quote in **Settings → Display** on the web app, or in the bot's settings menu. The setting syncs across both surfaces — change it on the bot, the web app picks it up.
+
+## Related
+
+<Card title="Order execution" icon="bolt" href="/concepts/order-execution">
+  How the quote token interacts with slippage, fees, and route selection.
+</Card>

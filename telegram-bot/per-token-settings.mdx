@@ -1,0 +1,60 @@
+---
+title: "Per-token settings"
+description: "Slippage, priority fee, MEV protection, Jito tip, presets — set once in /settings, applied to every trade."
+icon: "gear"
+---
+
+The bot's `/settings` command is where you set your trade defaults. These values apply to every Buy/Sell unless you override them per-trade from a token card.
+
+For the underlying mechanics see [Order execution](/concepts/order-execution) and [MEV & Jito](/concepts/mev-and-jito).
+
+## The settings menu
+
+Send `/settings`. The bot opens a menu with:
+
+- **Buy** — defaults applied to every buy
+- **Sell** — defaults applied to every sell
+- **Quote token** — toggle SOL ↔ USDC for pricing display
+- **Language** — English / Arabic
+- **Reset Defaults** — restore everything to factory defaults
+
+## Buy / Sell sub-menu
+
+| Setting | Purpose | Default |
+| --- | --- | --- |
+| Preset amounts | Quick-select buy sizes (`0.1 / 0.5 / 1` SOL or `10 / 50 / 200` USDC) | SOL: `0.1, 0.5, 1` / USDC: `10, 50, 200` |
+| Slippage limit | Max price drift you'll accept | 5% |
+| Priority fee | Solana network priority fee in SOL | 0.0001 |
+| MEV protection | Bundle through Jito (on/off) | On |
+| Jito tier | Good / Fast / Turbo / Custom (only relevant if MEV is on) | Off until MEV is toggled on |
+
+For Sell, the presets are denominated in **% of holdings** (`25 / 50 / 100%`).
+
+## Custom values
+
+Each setting has a **Custom** option. Tap it; the bot prompts you to type the value. Bounds are enforced — clearly invalid values (e.g., 0.0001% slippage, 999 SOL priority fee) get rejected.
+
+## Settings sync with the web
+
+These same values back the [web Terminal Settings](/web-app/terminal/settings). Change in the bot, the web picks up. Change on the web, the bot picks up.
+
+## Per-trade overrides
+
+When you open a token card and tap **Settings** before authorizing, you get a one-time override panel. Changes there apply to that trade only — your global defaults stay untouched.
+
+This is useful for tokens with unusually thin liquidity (raise slippage temporarily) or fresh launches (bump up the Jito tier for that one trade).
+
+## Reset Defaults
+
+The **Reset Defaults** button on the main `/settings` menu wipes all your customizations and restores factory values. Useful if you've experimented your way into a confused state.
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Order execution" icon="route" href="/concepts/order-execution">
+    What slippage and priority fee actually do.
+  </Card>
+  <Card title="MEV & Jito" icon="shield" href="/concepts/mev-and-jito">
+    The MEV protection layer in detail.
+  </Card>
+</CardGroup>

@@ -1,0 +1,69 @@
+---
+title: "Real-time architecture"
+description: "Some surfaces in Znox are live (WebSocket-driven), others are polled. Knowing which is which helps you trust what you see."
+icon: "bolt-lightning"
+---
+
+Trading is a real-time activity. But not every part of the UI updates the same way — some are pushed from the backend the moment data changes, others are pulled on a schedule. The distinction matters because the second category has a bounded staleness.
+
+## Live (WebSocket-pushed)
+
+These surfaces update the moment the underlying data changes:
+
+<CardGroup cols={2}>
+  <Card title="Terminal price" icon="chart-line">
+    Token price ticks as quotes update. Sub-second.
+  </Card>
+  <Card title="Terminal recent trades" icon="arrow-right-arrow-left">
+    New swaps appear as soon as Solana confirms them. Buys flash green, sells flash red.
+  </Card>
+  <Card title="Track Wallets" icon="user-tag">
+    A tracked wallet's trades appear in real-time as their transactions are parsed.
+  </Card>
+  <Card title="Broadcast feed" icon="tower-broadcast">
+    New broadcasts and reactions update without a refresh.
+  </Card>
+  <Card title="SOL price" icon="coin">
+    Header SOL price ticks live.
+  </Card>
+  <Card title="Jito tip floor" icon="gauge-high">
+    Tip-tier values refresh continuously to track the live network state.
+  </Card>
+</CardGroup>
+
+## Polled (refreshed on a schedule)
+
+These surfaces have a known refresh interval. Data can be up to one interval stale:
+
+| Surface | Interval |
+| --- | --- |
+| Markets → Trending / Explore lists | ~10 seconds |
+| Markets → Top Traders | ~30 seconds |
+| Portfolio holdings list | ~10 seconds |
+| Token security audit | On token open + manual refresh |
+| Reward stats | On page open |
+
+Polled surfaces show a small refresh indicator with a countdown — if you're staring at a number you need *right now*, you can hit the refresh button instead of waiting.
+
+## Why some things are polled
+
+Live updates aren't free. Every WebSocket subscription is a continuous channel between server and client. For high-volume views like the trending list (thousands of tokens, dozens of fields each), pushing every tick to every viewer would saturate connections and cost more than the freshness is worth.
+
+The rule of thumb on Znox:
+
+- **Anything you'd act on in milliseconds** (token price, your trade fills, a tracked wallet's move) is pushed.
+- **Anything you'd act on in seconds-to-minutes** (market screeners, leaderboards) is polled.
+
+## What it means for trading
+
+If you're sitting on the Terminal page looking at the chart, the price is current to the millisecond. If you're scrolling Markets and decide to click a token, the table you clicked from might be up to 10s stale — but the moment you land in the Terminal, you're back on live data.
+
+## Connection drops
+
+If your WebSocket connection drops (network blip, laptop lid closed), Znox auto-reconnects and replays missed messages. You may see a brief "reconnecting" indicator. Trades you placed while disconnected still happen — the trade execution path doesn't depend on the WebSocket.
+
+## Related
+
+<Card title="Terminal overview" icon="chart-line" href="/web-app/terminal/overview">
+  The page that uses the most live surfaces.
+</Card>

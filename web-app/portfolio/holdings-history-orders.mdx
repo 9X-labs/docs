@@ -1,0 +1,61 @@
+---
+title: "Holdings, History, Orders"
+description: "The three tabs in the wallet detail view — open positions, closed trades, and pending limit orders."
+icon: "list"
+---
+
+When you select a wallet in [Portfolio](/web-app/portfolio/overview), the right pane shows three tabs.
+
+## Holdings
+
+Open positions for this wallet — tokens you bought but haven't fully sold.
+
+| Column | Meaning |
+| --- | --- |
+| Token | Symbol + name + last-active time |
+| Bought / MC | Total invested + market cap at entry |
+| Sold / MC | Realized exits + market cap at exit |
+| Bal | Current token balance + USD equivalent |
+| UPnL | Unrealized P&L ($ and %) |
+| Total Profit | Realized + unrealized combined |
+| Holding Duration | Time since first buy |
+
+### Filters
+
+- **Hide closed positions** — drop tokens you've fully sold.
+- **Hide low liquidity** — drop tokens whose pools are too thin to exit reliably.
+- **Hide didn't-buy** — drop airdrops or tokens that arrived without a corresponding buy.
+- **Show stale** — flag positions older than a threshold.
+- **Show hidden (N)** — restore tokens you previously hid via context menu.
+
+### Quick sell
+
+Each row has preset percentage buttons — `25 / 50 / 75 / 100%` — for fast partial exits. Right-click for context menu (sell, transfer, hide).
+
+## History
+
+Every buy / sell / swap on this wallet, in chronological order.
+
+| Column | Meaning |
+| --- | --- |
+| Side | BUY / SELL / SWAP |
+| Token | What was traded |
+| Amount | Token + quote |
+| Price | Execution price |
+| Timestamp | When the trade closed |
+| Status | Confirmed / failed |
+| TX | Solana explorer link |
+
+A filter pill lets you scope to **All / Buys / Sells**. Export to CSV from the action menu.
+
+## Orders
+
+Open **limit orders** for this wallet (only if you've placed any — see [Order execution](/concepts/order-execution)). Each row shows the target price, side, amount, and a Cancel button.
+
+If you've never placed a limit order, this tab is empty.
+
+## Related
+
+<Card title="Order execution" icon="bolt" href="/concepts/order-execution">
+  How market and limit orders differ on Znox.
+</Card>

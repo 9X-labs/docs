@@ -1,0 +1,83 @@
+---
+title: "Security model"
+description: "Passkeys, 2FA, withdrawal allowlist, and multi-phase recovery — the layers that protect your account and your funds."
+icon: "shield"
+---
+
+Znox holds wallet keys in a managed key system so you don't have to. That convenience comes with the responsibility of making sure no one else can access your account. The security model is a defense-in-depth stack — each layer is independent, and the most sensitive operations require multiple layers to pass.
+
+## Authentication layers
+
+<CardGroup cols={2}>
+  <Card title="Sign-in provider" icon="key">
+    Google or Telegram OAuth. The first line of defense — anyone who can log into your Google or Telegram can log into Znox unless you add more layers.
+  </Card>
+  <Card title="Passkey" icon="fingerprint">
+    Optional WebAuthn credential bound to your device's biometric (FaceID, TouchID, Windows Hello). Phishing-resistant — passkeys can't be replayed against fake sites.
+  </Card>
+  <Card title="2FA (TOTP)" icon="mobile-screen">
+    Time-based one-time passwords from an authenticator app. Adds a second factor on top of OAuth.
+  </Card>
+  <Card title="Session management" icon="list-check">
+    See every active session (browser, device, IP). Revoke individual sessions or "log out everywhere" on demand.
+  </Card>
+</CardGroup>
+
+## Withdrawal allowlist
+
+By default, you can withdraw to any Solana address. Once you add an **allowlist**, large withdrawals (above a threshold) can only go to allowlisted addresses.
+
+<Steps>
+  <Step title="Add an address">
+    **Settings → Security → Withdrawal allowlist → Add**. Paste the destination Solana address and label it.
+  </Step>
+  <Step title="Pass the security challenge">
+    Adding to the allowlist itself triggers a multi-phase challenge — passkey + 2FA + email confirmation. This prevents an attacker who briefly took over the session from instantly adding their own address.
+  </Step>
+  <Step title="Wait for the gate">
+    New allowlist entries are subject to a short hold before they become valid for withdrawals. This gives you a window to revoke if something looks wrong.
+  </Step>
+</Steps>
+
+<Tip>
+  An allowlist is the single most effective protection against account compromise. Even if an attacker fully takes over your session, they can't withdraw to an address that wasn't pre-approved.
+</Tip>
+
+## Multi-phase recovery
+
+Recovering account access (e.g., you lost your phone with the 2FA app) goes through a deliberate multi-step flow:
+
+1. **Initiate** — request a recovery from the login screen.
+2. **Challenge** — Znox issues a challenge that asks for evidence you're the account owner (originating provider sign-in, recovery email confirmation).
+3. **Wait period** — once verified, a cooling-off period applies before the new credentials become live. Active sessions are notified during this period.
+4. **Finalize** — at the end of the wait, the new credentials replace the old ones.
+
+The wait period exists specifically so that *if* an attacker were the one initiating recovery, the real owner has time to abort it.
+
+## Passphrase export
+
+Znox holds your wallet keys, but you can export an encrypted passphrase that lets you derive the keys yourself. This is your escape hatch — even if Znox went away, your funds are recoverable.
+
+Export is gated behind:
+- 2FA (if enabled)
+- Email confirmation
+- A separate session reauth
+
+Treat the exported passphrase like you would a hardware wallet seed: never share, never paste into any input that didn't generate it.
+
+## What we don't do
+
+- We don't email or DM you asking for your passphrase, 2FA code, or session cookie. Anyone who does is impersonating us.
+- We don't auto-link wallets you didn't explicitly add. If you see a wallet you don't recognize, treat it as a security incident and revoke sessions.
+- We don't whitelist your withdrawal address automatically. Every allowlist entry requires the full challenge.
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Settings → Security" icon="lock" href="/web-app/settings/security">
+    The UI where you configure all of these.
+  </Card>
+  <Card title="Deposit & withdraw" icon="arrow-right-arrow-left" href="/web-app/portfolio/deposit-withdraw">
+    The withdrawal flow that interacts with the allowlist gate.
+  </Card>
+</CardGroup>
